@@ -703,9 +703,13 @@ class Affiliateambassadorteam_RQ_Feature{
 				</div>
 			</div>
 			<div class="${this.attr_prefix}right">
-				<a href="#" class="${this.attr_prefix}btn ${this.attr_prefix}flex_ ${this.attr_prefix}gap-1 ${this.attr_prefix}align_center">
+				<a href="#" class="${this.attr_prefix}btn ${this.attr_prefix}flex_ ${this.attr_prefix}gap-1 ${this.attr_prefix}align_center" onclick="Affiliateambassadorteam_RQ_Feature.askAQuestionForm(event)">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: #fff"><path d="M20 2H4c-1.103 0-2 .897-2 2v18l5.333-4H20c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zm0 14H6.667L4 18V4h16v12z"></path></svg>
 					<span>Ask A Question</span>
+				</a>
+				<a href="#" class="${this.attr_prefix}btn ${this.attr_prefix}flex_ ${this.attr_prefix}gap-1 ${this.attr_prefix}align_center" onclick="Affiliateambassadorteam_RQ_Feature.postAReviewForm(event)">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: #fff;"><path d="m6.516 14.323-1.49 6.452a.998.998 0 0 0 1.529 1.057L12 18.202l5.445 3.63a1.001 1.001 0 0 0 1.517-1.106l-1.829-6.4 4.536-4.082a1 1 0 0 0-.59-1.74l-5.701-.454-2.467-5.461a.998.998 0 0 0-1.822 0L8.622 8.05l-5.701.453a1 1 0 0 0-.619 1.713l4.214 4.107zm2.853-4.326a.998.998 0 0 0 .832-.586L12 5.43l1.799 3.981a.998.998 0 0 0 .832.586l3.972.315-3.271 2.944c-.284.256-.397.65-.293 1.018l1.253 4.385-3.736-2.491a.995.995 0 0 0-1.109 0l-3.904 2.603 1.05-4.546a1 1 0 0 0-.276-.94l-3.038-2.962 4.09-.326z"></path></svg>
+					<span>Post A Review</span>
 				</a>
 			</div>
 		</div>`
@@ -1563,12 +1567,25 @@ class Affiliateambassadorteam_RQ_Feature{
 
 	}
 
-	static postReview(){
 
+	//ask a question
+	//===================================
+	static askAQuestionForm(){
+		const formHTML = `
+			<div class='${this.attr_prefix}ask-a-question-form'>
+				<div class='${this.attr_prefix}form-group'>
+					<label class='${this.attr_prefix}label'>Question</label>
+					<textarea class='${this.attr_prefix}question--input'></textarea>
+				</div>
+				<div class='${this.attr_prefix}flex_ ${this.attr_prefix}flex_end'>
+					<button></button>
+				</div>
+			</div>
+		`
 	}
 
-	static askAQuestion(){
-		
-	}
+
+	//post a review
+	//==================================
 }
 
