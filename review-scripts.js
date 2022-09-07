@@ -230,7 +230,7 @@ class Affiliateambassadorteam_RQ_Feature{
 
 		#${this.main_warpper_id} .${this.attr_prefix}tabBodyBox {
 		    max-height: 0px;
-		    overflow: hidden;
+		    overflow: visiable;
 		    transition: 0.7s;
 		}
 
@@ -253,7 +253,7 @@ class Affiliateambassadorteam_RQ_Feature{
 
 		#${this.main_warpper_id} .${this.attr_prefix}searchBox {
 		    position: relative;
-		    width: 60%;
+		    width: 100%;
 		}
 
 		#${this.main_warpper_id} .${this.attr_prefix}searchBox i {
@@ -602,90 +602,6 @@ class Affiliateambassadorteam_RQ_Feature{
 	`
 
 
-	  static scripts = `
-	  	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-	    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-	    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"
-	        integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA=="
-	        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	    <!-- Initialize Swiper -->
-	    <script>
-	        var swiper = new Swiper(".mySwiper", {
-	            pagination: {
-	                el: ".swiper-pagination",
-	                clickable: true,
-	                renderBullet: function (index, className) {
-	                    return (
-	                        '<span class="' +
-	                        className +
-	                        '">' +
-	                        (index + 1) +
-	                        "</span>"
-	                    );
-	                },
-	            },
-	        });
-	    </script>
-	    <script>
-	        $(".tab__head li").click(function (e) {
-	            e.preventDefault();
-	            $(".tab__head li").removeClass("active");
-	            $(this).addClass("active");
-	            var className = $(this).attr("data-class");
-	            $(".tabBodyBox").css("maxHeight", "0");
-	            $(".tabBodyBox").removeClass("active");
-	            $("#" + className).addClass("active");
-	            let tabliactive = document.querySelector(".tabBodyBox.active");
-	            $(tabliactive).css(
-	                "maxHeight",
-	                tabliactive.scrollHeight + "px"
-	            );
-	        });
-    	</script>
-
-	    <script>
-	        $(".dropdown-menu .dropdown-item").click(function (e) {
-	            e.preventDefault();
-	            var val = $(this).html();
-	            $(this).parent().siblings("btn").html("");
-	            $(this).parent().siblings(".btn").children("span").html("");
-	            $(this).parent().siblings(".btn").children("span").html(val);
-	            $(".dropdown-menu").slideUp();
-	        });
-	        $(".dropdown .btn").click(function () {
-	            $(this).siblings(".dropdown-menu").slideToggle();
-	        });
-	        $(".sharebtn").click(function (e) {
-	            e.preventDefault();
-	            $(this).siblings(".sharebtndisplay").slideToggle();
-	        });
-	        $(".countup").click(function (e) {
-	            e.preventDefault();
-	            //     var a = $(this).children("span").html();
-	            //    var ab = parseInt(a );
-	            //    $(this).children("span").html(ab + 1);
-	        });
-	        $(".countdown").click(function (e) {
-	            e.preventDefault();
-	            //     var a = $(this).children("span").html();
-	            //    var ab = parseInt(a);
-	            //    $(this).children("span").html(ab + 1);
-	        });
-	        $("a#inline").fancybox({
-	            hideOnContentClick: true,
-	        });
-	        $("a.conn_img").fancybox({
-	            transitionIn: "elastic",
-	            transitionOut: "elastic",
-	            speedIn: 600,
-	            speedOut: 200,
-	            overlayShow: false,
-	        });
-	    </script>
-	  `
-
-
 	static init(targetDomElementId){
 		const head = document.querySelector("head")
 		const body = document.querySelector("body")
@@ -698,1622 +614,26 @@ class Affiliateambassadorteam_RQ_Feature{
 			        <div class="${this.attr_prefix}reviewSection__heading">
 			            <h2>Reviews</h2>
 			        </div>
-			        <div class="${this.attr_prefix}reviewSection__Body">
-			            <div class="${this.attr_prefix}reviewSection__Body--box ${this.attr_prefix}flex_ ${this.attr_prefix}flex_space">
-			                <div class="${this.attr_prefix}left">
-			                    <div class="${this.attr_prefix}flex_ ${this.attr_prefix}gap-4 ${this.attr_prefix}align_center">
-			                        <div>
-			                            <h2>5.0</h2>
-			                            <ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}startlist ${this.attr_prefix}flex_center ${this.attr_prefix}gap-1">
-			                                <li class="${this.attr_prefix}active">
-			                                    <i class="fa-solid fa-star"></i>
-			                                </li>
-			                                <li class="${this.attr_prefix}active">
-			                                    <i class="fa-solid fa-star"></i>
-			                                </li>
-			                                <li class="${this.attr_prefix}active">
-			                                    <i class="fa-solid fa-star"></i>
-			                                </li>
-			                                <li class="${this.attr_prefix}active">
-			                                    <i class="fa-solid fa-star"></i>
-			                                </li>
-			                                <li><i class="fa-solid fa-star"></i></li>
-			                            </ul>
-			                            <div>
-			                                <b>535</b> <span>Reviews</span> | <b>7</b>
-			                                <span>Q&As</span>
-			                            </div>
-			                        </div>
-			                        <div>
-			                            <ul class="${this.attr_prefix}list ${this.attr_prefix}ratingList">
-			                                <li class="${this.attr_prefix}w-80">
-			                                    <b>5</b>
-			                                    <div><span></span></div>
-			                                </li>
-			                                <li class="${this.attr_prefix}w-60">
-			                                    <b>4</b>
-			                                    <div><span></span></div>
-			                                </li>
-			                                <li class="${this.attr_prefix}w-40">
-			                                    <b>3</b>
-			                                    <div><span></span></div>
-			                                </li>
-			                                <li class="${this.attr_prefix}w-20">
-			                                    <b>2</b>
-			                                    <div><span></span></div>
-			                                </li>
-			                                <li class="${this.attr_prefix}w-0">
-			                                    <b>1</b>
-			                                    <div><span></span></div>
-			                                </li>
-			                            </ul>
-			                        </div>
-			                    </div>
-			                </div>
-			                <div class="${this.attr_prefix}right">
-			                    <a href="#" class="${this.attr_prefix}btn ${this.attr_prefix}flex_ ${this.attr_prefix}gap-1 ${this.attr_prefix}align_center">
-			                    	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: #fff"><path d="M20 2H4c-1.103 0-2 .897-2 2v18l5.333-4H20c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zm0 14H6.667L4 18V4h16v12z"></path></svg>
-			                    	<span>Ask A Question</span>
-			                    </a>
-			                </div>
-			            </div>
+			        ${this.getReviewTopPartHTML()}
+
 			            <div class="${this.attr_prefix}reviewSection__Body--box2">
 			                <div class="${this.attr_prefix}tab">
 			                    <div class="${this.attr_prefix}tab__head">
 			                        <ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}gap-2">
-			                            <li class="${this.attr_prefix}btn ${this.attr_prefix}active" data-class="${this.attr_prefix}Reviews">
+			                            <li class="${this.attr_prefix}btn ${this.attr_prefix}active" data-class="${this.attr_prefix}Reviews" onclick="Affiliateambassadorteam_RQ_Feature.showReviewPart(this)">
 			                                Reviews
 			                            </li>
-			                            <li class="${this.attr_prefix}btn" data-class="${this.attr_prefix}Questions">
+			                            <li class="${this.attr_prefix}btn" data-class="${this.attr_prefix}Questions" onclick="Affiliateambassadorteam_RQ_Feature.showQuestionPart(this)">
 			                                Questions
 			                            </li>
 			                        </ul>
 			                    </div>
 			                    <div class="${this.attr_prefix}tab__body">
-			                        <div class="${this.attr_prefix}tabBodyBox" id="${this.attr_prefix}Reviews">
-			                            <h6 class="${this.attr_prefix}filter">Filter Reviews</h6>
-			                            <div class="${this.attr_prefix}searchBox">
-			                                <i class="fa-solid fa-magnifying-glass"></i>
-			                                <input type="search" placeholder="Search Reviews" class="${this.attr_prefix}searchBox-input"
-			                                    maxlength="120" />
-			                            </div>
-			                            <br />
-			                            <div class="${this.attr_prefix}flex_ ${this.attr_prefix}rati">
-			                                <div class="${this.attr_prefix}dropdown ${this.attr_prefix}rating">
-			                                    <button class="${this.attr_prefix}btn ${this.attr_prefix}btn-secondary ${this.attr_prefix}flex_ align_center ${this.attr_prefix}flex_space ${this.attr_prefix}gap-1">
-			                                        <span>Rating</span>
-			                                        <i class="fa-solid fa-chevron-down"></i>
-			                                    </button>
-			                                    <div class="${this.attr_prefix}dropdown-menu ${this.attr_prefix}d-none">
-			                                        <a class="${this.attr_prefix}dropdown-item" href="#">All</a>
-			                                        <a class="${this.attr_prefix}dropdown-item" href="#">
-			                                            <ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}startlist ${this.attr_prefix}gap-1">
-			                                                <li class="${this.attr_prefix}active">
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li class="${this.attr_prefix}active">
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li class="${this.attr_prefix}active">
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li class="${this.attr_prefix}active">
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li>
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                            </ul>
-			                                        </a>
-			                                        <a class="${this.attr_prefix}dropdown-item" href="#">
-			                                            <ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}startlist ${this.attr_prefix}gap-1">
-			                                                <li class="${this.attr_prefix}active">
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li class="${this.attr_prefix}active">
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li class="${this.attr_prefix}active">
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li class="${this.attr_prefix}active">
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li>
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                            </ul>
-			                                        </a>
-			                                        <a class="${this.attr_prefix}dropdown-item" href="#">
-			                                            <ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}startlist ${this.attr_prefix}gap-1">
-			                                                <li class="${this.attr_prefix}active">
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li class="${this.attr_prefix}active">
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li class="${this.attr_prefix}active">
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li class="">
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li>
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                            </ul>
-			                                        </a>
-			                                        <a class="${this.attr_prefix}dropdown-item" href="#">
-			                                            <ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}startlist ${this.attr_prefix}gap-1">
-			                                                <li class="${this.attr_prefix}active">
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li class="${this.attr_prefix}active">
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li>
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li>
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li>
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                            </ul>
-			                                        </a>
-			                                        <a class="${this.attr_prefix}dropdown-item" href="#">
-			                                            <ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}startlist ${this.attr_prefix}gap-1">
-			                                                <li class="${this.attr_prefix}active">
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li>
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li>
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li>
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li>
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                            </ul>
-			                                        </a>
-			                                    </div>
-			                                </div>
-			                                <div class="${this.attr_prefix}dropdown ${this.attr_prefix}imagevideo">
-			                                    <button class="btn btn-secondary flex_ align_center flex_space gap-1">
-			                                        <span>Images & Videos</span>
-			                                        <i class="fa-solid fa-chevron-down"></i>
-			                                    </button>
-			                                    <div class="dropdown-menu d-none">
-			                                        <a class="dropdown-item" href="#"><b>All</b></a>
-			                                        <a class="dropdown-item" href="#">With Images & Videos</a>
-			                                    </div>
-			                                </div>
-			                            </div>
-			                            <div class="tabBodyBox__inner">
-			                                <div class="flex_ flex_space align_center">
-			                                    <h4 class="m-0 revicount">
-			                                        535 Reviews
-			                                    </h4>
-			                                    <div class="dropdown">
-			                                        <button class="btn btn-secondary flex_ align_center flex_space gap-1">
-			                                            <span> Dropdown button</span>
-			                                            <i class="fa-solid fa-chevron-down"></i>
-			                                        </button>
-			                                        <div class="dropdown-menu d-none">
-			                                            <a class="dropdown-item" href="#">Newest</a>
-			                                            <a class="dropdown-item" href="#">Highest Rating</a>
-			                                            <a class="dropdown-item" href="#">Lowest Rating</a>
-			                                            <a class="dropdown-item" href="#">Most Votes</a>
-			                                            <a class="dropdown-item" href="#">Least Votes</a>
-			                                        </div>
-			                                    </div>
-			                                </div>
-			                                <div class="tabBodyBox__inner-Box">
-			                                    <div class="profileBox flex_ align_center">
-			                                        <div class="profileBox__img">J</div>
-			                                        <div class="profileBox__Body">
-			                                            <div class="flex_ flex_space align_center flex_wrap">
-			                                                <h5 class="m-0">
-			                                                    Jason
-			                                                    <span>Verified
-			                                                        Buyer</span>
-			                                                </h5>
-			                                                <b>03/04/22</b>
-			                                            </div>
 
-			                                            <ul class="list flex_ startlist gap-1">
-			                                                <li class="active">
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li class="active">
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li class="active">
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li class="active">
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li>
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                            </ul>
-			                                        </div>
-			                                    </div>
-			                                    <!-- close profileBox  -->
-			                                    <h4 class="m-0">Top Notch Coatin</h4>
-			                                    <p>
-			                                        This stuff is the shit!! That’s the
-			                                        best way I can describe it. Lays
-			                                        down easy, has a long flash time,
-			                                        and the results are out of this
-			                                        world! Not only is the coating top
-			                                        notch but their customer service is
-			                                        just as awesome. Super fast shipping
-			                                        and if you have any issues
-			                                        whatsoever they’re quick to get it
-			                                        resolved. I can’t think of any
-			                                        reason to use...
-			                                        <a href="#">Read More</a>
-			                                    </p>
-			                                    <ul class="list imgBox grid grid_4 gap-4 my-2">
-			                                        <li>
-			                                            <a href="#inline1" class="conn_img">
-			                                                <img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983450/square.jpg?1659888633"
-			                                                    alt="" /></a>
-			                                            <div class="d-none" id="inline1">
-			                                                <div class="modalBox flex_">
-			                                                    <div class="left">
-			                                                        <div class="swiper mySwiper">
-			                                                            <div class="swiper-wrapper">
-			                                                                <div class="swiper-slide">
-			                                                                    <img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983426/original.jpg?1659888625"
-			                                                                        alt="" />
-			                                                                </div>
-			                                                                <div class="swiper-slide">
-			                                                                    <img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983426/original.jpg?1659888625"
-			                                                                        alt="" />
-			                                                                </div>
-			                                                            </div>
-			                                                            <div class="swiper-pagination"></div>
-			                                                        </div>
-			                                                    </div>
-			                                                    <div class="right">
-			                                                        <div class="tabBodyBox__inner-Box">
-			                                                            <div class="profileBox flex_ align_center">
-			                                                                <div class="profileBox__img">
-			                                                                    J
-			                                                                </div>
-			                                                                <div class="profileBox__Body">
-			                                                                    <div class="flex_ flex_space align_center flex_wrap">
-			                                                                        <h5 class="m-0">
-			                                                                            Jason
-			                                                                            <span>Verified
-			                                                                                Buyer</span>
-			                                                                        </h5>
-			                                                                        <b>03/04/22</b>
-			                                                                    </div>
-
-			                                                                    <ul class="list flex_ startlist gap-1">
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li>
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                    </ul>
-			                                                                </div>
-			                                                            </div>
-			                                                            <!-- close profileBox  -->
-			                                                            <h4 class="m-0">
-			                                                                Top Notch
-			                                                                Coatin
-			                                                            </h4>
-			                                                            <p>
-			                                                                This stuff
-			                                                                is the
-			                                                                shit!!
-			                                                                That’s the
-			                                                                best way I
-			                                                                can describe
-			                                                                it. Lays
-			                                                                down easy,
-			                                                                has a long
-			                                                                flash time,
-			                                                                and the
-			                                                                results are
-			                                                                out of this
-			                                                                world! Not
-			                                                                only is the
-			                                                                coating top
-			                                                                notch but
-			                                                                their
-			                                                                customer
-			                                                                service is
-			                                                                just as
-			                                                                awesome.
-			                                                                Super fast
-			                                                                shipping and
-			                                                                if you have
-			                                                                any issues
-			                                                                whatsoever
-			                                                                they’re
-			                                                                quick to get
-			                                                                it resolved.
-			                                                                I can’t
-			                                                                think of any
-			                                                                reason to
-			                                                                use... >
-			                                                            </p>
-
-			                                                            <ul class="list flex_ likeclick flex_space align_center flex_wrap">
-			                                                                <li class="flex_ align_center flex_wrap gap-2">
-			                                                                    <a href="#" class="sharebtn">
-			                                                                        <i class="fa-regular fa-share-from-square"></i>
-			                                                                        <span>Share</span></a>
-			                                                                    <div class="sharebtndisplay d-none">
-			                                                                        <ul class="list flex_ gap-1">
-			                                                                            <li>
-			                                                                                <a href="#">Facebook</a>
-			                                                                            </li>
-			                                                                            <li>
-			                                                                                <a href="#">Twitter</a>
-			                                                                            </li>
-			                                                                            <li>
-			                                                                                <a href="#">Linkdin</a>
-			                                                                            </li>
-			                                                                        </ul>
-			                                                                    </div>
-			                                                                </li>
-			                                                                <li class="flex_ align_center flex_wrap gap-2">
-			                                                                    <p class="m-0">
-			                                                                        Was
-			                                                                        This
-			                                                                        Review
-			                                                                        Helpful?
-			                                                                    </p>
-			                                                                    <ul class="list flex_ align_center gap-1">
-			                                                                        <li>
-			                                                                            <a href="#" class="countup"><i
-			                                                                                    class="fa-solid fa-thumbs-up"></i>
-			                                                                                <span>0</span></a>
-			                                                                        </li>
-			                                                                        <li>
-			                                                                            <a href="#" class="countdown"><i
-			                                                                                    class="fa-solid fa-thumbs-down"></i>
-			                                                                                <span>0</span></a>
-			                                                                        </li>
-			                                                                    </ul>
-			                                                                </li>
-			                                                            </ul>
-			                                                        </div>
-			                                                    </div>
-			                                                </div>
-			                                            </div>
-			                                        </li>
-			                                        <li>
-			                                            <a href="#inline2" class="conn_img">
-			                                                <img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983450/square.jpg?1659888633"
-			                                                    alt="" /></a>
-			                                            <div class="d-none" id="inline2">
-			                                                <div class="modalBox flex_">
-			                                                    <div class="left">
-			                                                        <div class="swiper mySwiper">
-			                                                            <div class="swiper-wrapper">
-			                                                                <div class="swiper-slide">
-			                                                                    <img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983426/original.jpg?1659888625"
-			                                                                        alt="" />
-			                                                                </div>
-			                                                                <div class="swiper-slide">
-			                                                                    <img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983426/original.jpg?1659888625"
-			                                                                        alt="" />
-			                                                                </div>
-			                                                            </div>
-			                                                            <div class="swiper-pagination"></div>
-			                                                        </div>
-			                                                    </div>
-			                                                    <div class="right">
-			                                                        <div class="tabBodyBox__inner-Box">
-			                                                            <div class="profileBox flex_ align_center">
-			                                                                <div class="profileBox__img">
-			                                                                    J
-			                                                                </div>
-			                                                                <div class="profileBox__Body">
-			                                                                    <div class="flex_ flex_space align_center flex_wrap">
-			                                                                        <h5 class="m-0">
-			                                                                            Jason
-			                                                                            <span>Verified
-			                                                                                Buyer</span>
-			                                                                        </h5>
-			                                                                        <b>03/04/22</b>
-			                                                                    </div>
-
-			                                                                    <ul class="list flex_ startlist gap-1">
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li>
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                    </ul>
-			                                                                </div>
-			                                                            </div>
-			                                                            <!-- close profileBox  -->
-			                                                            <h4 class="m-0">
-			                                                                Top Notch
-			                                                                Coatin
-			                                                            </h4>
-			                                                            <p>
-			                                                                This stuff
-			                                                                is the
-			                                                                shit!!
-			                                                                That’s the
-			                                                                best way I
-			                                                                can describe
-			                                                                it. Lays
-			                                                                down easy,
-			                                                                has a long
-			                                                                flash time,
-			                                                                and the
-			                                                                results are
-			                                                                out of this
-			                                                                world! Not
-			                                                                only is the
-			                                                                coating top
-			                                                                notch but
-			                                                                their
-			                                                                customer
-			                                                                service is
-			                                                                just as
-			                                                                awesome.
-			                                                                Super fast
-			                                                                shipping and
-			                                                                if you have
-			                                                                any issues
-			                                                                whatsoever
-			                                                                they’re
-			                                                                quick to get
-			                                                                it resolved.
-			                                                                I can’t
-			                                                                think of any
-			                                                                reason to
-			                                                                use... >
-			                                                            </p>
-
-			                                                            <ul class="list flex_ likeclick flex_space align_center flex_wrap">
-			                                                                <li class="flex_ align_center flex_wrap gap-2">
-			                                                                    <a href="#" class="sharebtn">
-			                                                                        <i class="fa-regular fa-share-from-square"></i>
-			                                                                        <span>Share</span></a>
-			                                                                    <div class="sharebtndisplay d-none">
-			                                                                        <ul class="list flex_ gap-1">
-			                                                                            <li>
-			                                                                                <a href="#">Facebook</a>
-			                                                                            </li>
-			                                                                            <li>
-			                                                                                <a href="#">Twitter</a>
-			                                                                            </li>
-			                                                                            <li>
-			                                                                                <a href="#">Linkdin</a>
-			                                                                            </li>
-			                                                                        </ul>
-			                                                                    </div>
-			                                                                </li>
-			                                                                <li class="flex_ align_center flex_wrap gap-2">
-			                                                                    <p class="m-0">
-			                                                                        Was
-			                                                                        This
-			                                                                        Review
-			                                                                        Helpful?
-			                                                                    </p>
-			                                                                    <ul class="list flex_ align_center gap-1">
-			                                                                        <li>
-			                                                                            <a href="#" class="countup"><i
-			                                                                                    class="fa-solid fa-thumbs-up"></i>
-			                                                                                <span>0</span></a>
-			                                                                        </li>
-			                                                                        <li>
-			                                                                            <a href="#" class="countdown"><i
-			                                                                                    class="fa-solid fa-thumbs-down"></i>
-			                                                                                <span>0</span></a>
-			                                                                        </li>
-			                                                                    </ul>
-			                                                                </li>
-			                                                            </ul>
-			                                                        </div>
-			                                                    </div>
-			                                                </div>
-			                                            </div>
-			                                        </li>
-			                                        <li>
-			                                            <a href="#inline3" class="conn_img">
-			                                                <img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983450/square.jpg?1659888633"
-			                                                    alt="" /></a>
-			                                            <div class="d-none" id="inline3">
-			                                                <div class="modalBox flex_">
-			                                                    <div class="left">
-			                                                        <div class="swiper mySwiper">
-			                                                            <div class="swiper-wrapper">
-			                                                                <div class="swiper-slide">
-			                                                                    <img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983426/original.jpg?1659888625"
-			                                                                        alt="" />
-			                                                                </div>
-			                                                                <div class="swiper-slide">
-			                                                                    <img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983426/original.jpg?1659888625"
-			                                                                        alt="" />
-			                                                                </div>
-			                                                            </div>
-			                                                            <div class="swiper-pagination"></div>
-			                                                        </div>
-			                                                    </div>
-			                                                    <div class="right">
-			                                                        <div class="tabBodyBox__inner-Box">
-			                                                            <div class="profileBox flex_ align_center">
-			                                                                <div class="profileBox__img">
-			                                                                    J
-			                                                                </div>
-			                                                                <div class="profileBox__Body">
-			                                                                    <div class="flex_ flex_space align_center flex_wrap">
-			                                                                        <h5 class="m-0">
-			                                                                            Jason
-			                                                                            <span>Verified
-			                                                                                Buyer</span>
-			                                                                        </h5>
-			                                                                        <b>03/04/22</b>
-			                                                                    </div>
-
-			                                                                    <ul class="list flex_ startlist gap-1">
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li>
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                    </ul>
-			                                                                </div>
-			                                                            </div>
-			                                                            <!-- close profileBox  -->
-			                                                            <h4 class="m-0">
-			                                                                Top Notch
-			                                                                Coatin
-			                                                            </h4>
-			                                                            <p>
-			                                                                This stuff
-			                                                                is the
-			                                                                shit!!
-			                                                                That’s the
-			                                                                best way I
-			                                                                can describe
-			                                                                it. Lays
-			                                                                down easy,
-			                                                                has a long
-			                                                                flash time,
-			                                                                and the
-			                                                                results are
-			                                                                out of this
-			                                                                world! Not
-			                                                                only is the
-			                                                                coating top
-			                                                                notch but
-			                                                                their
-			                                                                customer
-			                                                                service is
-			                                                                just as
-			                                                                awesome.
-			                                                                Super fast
-			                                                                shipping and
-			                                                                if you have
-			                                                                any issues
-			                                                                whatsoever
-			                                                                they’re
-			                                                                quick to get
-			                                                                it resolved.
-			                                                                I can’t
-			                                                                think of any
-			                                                                reason to
-			                                                                use... >
-			                                                            </p>
-
-			                                                            <ul class="list flex_ likeclick flex_space align_center flex_wrap">
-			                                                                <li class="flex_ align_center flex_wrap gap-2">
-			                                                                    <a href="#" class="sharebtn">
-			                                                                        <i class="fa-regular fa-share-from-square"></i>
-			                                                                        <span>Share</span></a>
-			                                                                    <div class="sharebtndisplay d-none">
-			                                                                        <ul class="list flex_ gap-1">
-			                                                                            <li>
-			                                                                                <a href="#">Facebook</a>
-			                                                                            </li>
-			                                                                            <li>
-			                                                                                <a href="#">Twitter</a>
-			                                                                            </li>
-			                                                                            <li>
-			                                                                                <a href="#">Linkdin</a>
-			                                                                            </li>
-			                                                                        </ul>
-			                                                                    </div>
-			                                                                </li>
-			                                                                <li class="flex_ align_center flex_wrap gap-2">
-			                                                                    <p class="m-0">
-			                                                                        Was
-			                                                                        This
-			                                                                        Review
-			                                                                        Helpful?
-			                                                                    </p>
-			                                                                    <ul class="list flex_ align_center gap-1">
-			                                                                        <li>
-			                                                                            <a href="#" class="countup"><i
-			                                                                                    class="fa-solid fa-thumbs-up"></i>
-			                                                                                <span>0</span></a>
-			                                                                        </li>
-			                                                                        <li>
-			                                                                            <a href="#" class="countdown"><i
-			                                                                                    class="fa-solid fa-thumbs-down"></i>
-			                                                                                <span>0</span></a>
-			                                                                        </li>
-			                                                                    </ul>
-			                                                                </li>
-			                                                            </ul>
-			                                                        </div>
-			                                                    </div>
-			                                                </div>
-			                                            </div>
-			                                        </li>
-			                                        <li>
-			                                            <a href="#inline4" class="conn_img">
-			                                                <img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983450/square.jpg?1659888633"
-			                                                    alt="" /></a>
-			                                            <div class="d-none" id="inline4">
-			                                                <div class="modalBox flex_">
-			                                                    <div class="left">
-			                                                        <div class="swiper mySwiper">
-			                                                            <div class="swiper-wrapper">
-			                                                                <div class="swiper-slide">
-			                                                                    <img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983426/original.jpg?1659888625"
-			                                                                        alt="" />
-			                                                                </div>
-			                                                                <div class="swiper-slide">
-			                                                                    <img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983426/original.jpg?1659888625"
-			                                                                        alt="" />
-			                                                                </div>
-			                                                            </div>
-			                                                            <div class="swiper-pagination"></div>
-			                                                        </div>
-			                                                    </div>
-			                                                    <div class="right">
-			                                                        <div class="tabBodyBox__inner-Box">
-			                                                            <div class="profileBox flex_ align_center">
-			                                                                <div class="profileBox__img">
-			                                                                    J
-			                                                                </div>
-			                                                                <div class="profileBox__Body">
-			                                                                    <div class="flex_ flex_space align_center flex_wrap">
-			                                                                        <h5 class="m-0">
-			                                                                            Jason
-			                                                                            <span>Verified
-			                                                                                Buyer</span>
-			                                                                        </h5>
-			                                                                        <b>03/04/22</b>
-			                                                                    </div>
-
-			                                                                    <ul class="list flex_ startlist gap-1">
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li>
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                    </ul>
-			                                                                </div>
-			                                                            </div>
-			                                                            <!-- close profileBox  -->
-			                                                            <h4 class="m-0">
-			                                                                Top Notch
-			                                                                Coatin
-			                                                            </h4>
-			                                                            <p>
-			                                                                This stuff
-			                                                                is the
-			                                                                shit!!
-			                                                                That’s the
-			                                                                best way I
-			                                                                can describe
-			                                                                it. Lays
-			                                                                down easy,
-			                                                                has a long
-			                                                                flash time,
-			                                                                and the
-			                                                                results are
-			                                                                out of this
-			                                                                world! Not
-			                                                                only is the
-			                                                                coating top
-			                                                                notch but
-			                                                                their
-			                                                                customer
-			                                                                service is
-			                                                                just as
-			                                                                awesome.
-			                                                                Super fast
-			                                                                shipping and
-			                                                                if you have
-			                                                                any issues
-			                                                                whatsoever
-			                                                                they’re
-			                                                                quick to get
-			                                                                it resolved.
-			                                                                I can’t
-			                                                                think of any
-			                                                                reason to
-			                                                                use... >
-			                                                            </p>
-
-			                                                            <ul class="list flex_ likeclick flex_space align_center flex_wrap">
-			                                                                <li class="flex_ align_center flex_wrap gap-2">
-			                                                                    <a href="#" class="sharebtn">
-			                                                                        <i class="fa-regular fa-share-from-square"></i>
-			                                                                        <span>Share</span></a>
-			                                                                    <div class="sharebtndisplay d-none">
-			                                                                        <ul class="list flex_ gap-1">
-			                                                                            <li>
-			                                                                                <a href="#">Facebook</a>
-			                                                                            </li>
-			                                                                            <li>
-			                                                                                <a href="#">Twitter</a>
-			                                                                            </li>
-			                                                                            <li>
-			                                                                                <a href="#">Linkdin</a>
-			                                                                            </li>
-			                                                                        </ul>
-			                                                                    </div>
-			                                                                </li>
-			                                                                <li class="flex_ align_center flex_wrap gap-2">
-			                                                                    <p class="m-0">
-			                                                                        Was
-			                                                                        This
-			                                                                        Review
-			                                                                        Helpful?
-			                                                                    </p>
-			                                                                    <ul class="list flex_ align_center gap-1">
-			                                                                        <li>
-			                                                                            <a href="#" class="countup"><i
-			                                                                                    class="fa-solid fa-thumbs-up"></i>
-			                                                                                <span>0</span></a>
-			                                                                        </li>
-			                                                                        <li>
-			                                                                            <a href="#" class="countdown"><i
-			                                                                                    class="fa-solid fa-thumbs-down"></i>
-			                                                                                <span>0</span></a>
-			                                                                        </li>
-			                                                                    </ul>
-			                                                                </li>
-			                                                            </ul>
-			                                                        </div>
-			                                                    </div>
-			                                                </div>
-			                                            </div>
-			                                        </li>
-			                                    </ul>
-			                                    <ul class="list flex_ likeclick flex_space align_center flex_wrap">
-			                                        <li class="flex_ align_center flex_wrap gap-2">
-			                                            <a href="#" class="sharebtn">
-			                                                <i class="fa-regular fa-share-from-square"></i>
-			                                                <span>Share</span></a>
-			                                            <div class="sharebtndisplay d-none">
-			                                                <ul class="list flex_ gap-1">
-			                                                    <li>
-			                                                        <a href="#">Facebook</a>
-			                                                    </li>
-			                                                    <li>
-			                                                        <a href="#">Twitter</a>
-			                                                    </li>
-			                                                    <li>
-			                                                        <a href="#">Linkdin</a>
-			                                                    </li>
-			                                                </ul>
-			                                            </div>
-			                                        </li>
-			                                        <li class="flex_ align_center flex_wrap gap-2">
-			                                            <p class="m-0">
-			                                                Was This Review Helpful?
-			                                            </p>
-			                                            <ul class="list flex_ align_center gap-1">
-			                                                <li>
-			                                                    <a href="#" class="countup"><i class="fa-solid fa-thumbs-up"></i>
-			                                                        <span>0</span></a>
-			                                                </li>
-			                                                <li>
-			                                                    <a href="#" class="countdown"><i
-			                                                            class="fa-solid fa-thumbs-down"></i>
-			                                                        <span>0</span></a>
-			                                                </li>
-			                                            </ul>
-			                                        </li>
-			                                    </ul>
-			                                </div>
-			                                <div class="tabBodyBox__inner-Box">
-			                                    <div class="profileBox flex_ align_center">
-			                                        <div class="profileBox__img">J</div>
-			                                        <div class="profileBox__Body">
-			                                            <div class="flex_ flex_space align_center flex_wrap">
-			                                                <h5 class="m-0">
-			                                                    Jason
-			                                                    <span>Verified
-			                                                        Buyer</span>
-			                                                </h5>
-			                                                <b>03/04/22</b>
-			                                            </div>
-
-			                                            <ul class="list flex_ startlist gap-1">
-			                                                <li class="active">
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li class="active">
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li class="active">
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li class="active">
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                                <li>
-			                                                    <i class="fa-solid fa-star"></i>
-			                                                </li>
-			                                            </ul>
-			                                        </div>
-			                                    </div>
-			                                    <!-- close profileBox  -->
-			                                    <h4 class="m-0">Top Notch Coatin</h4>
-			                                    <p>
-			                                        This stuff is the shit!! That’s the
-			                                        best way I can describe it. Lays
-			                                        down easy, has a long flash time,
-			                                        and the results are out of this
-			                                        world! Not only is the coating top
-			                                        notch but their customer service is
-			                                        just as awesome. Super fast shipping
-			                                        and if you have any issues
-			                                        whatsoever they’re quick to get it
-			                                        resolved. I can’t think of any
-			                                        reason to use...
-			                                        <a href="#">Read More</a>
-			                                    </p>
-			                                    <ul class="list imgBox grid grid_4 gap-4 my-2">
-			                                        <li>
-			                                            <a href="#inline1" class="conn_img">
-			                                                <img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983450/square.jpg?1659888633"
-			                                                    alt="" /></a>
-			                                            <div class="d-none" id="inline1">
-			                                                <div class="modalBox flex_">
-			                                                    <div class="left">
-			                                                        <div class="swiper mySwiper">
-			                                                            <div class="swiper-wrapper">
-			                                                                <div class="swiper-slide">
-			                                                                    <img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983426/original.jpg?1659888625"
-			                                                                        alt="" />
-			                                                                </div>
-			                                                                <div class="swiper-slide">
-			                                                                    <img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983426/original.jpg?1659888625"
-			                                                                        alt="" />
-			                                                                </div>
-			                                                            </div>
-			                                                            <div class="swiper-pagination"></div>
-			                                                        </div>
-			                                                    </div>
-			                                                    <div class="right">
-			                                                        <div class="tabBodyBox__inner-Box">
-			                                                            <div class="profileBox flex_ align_center">
-			                                                                <div class="profileBox__img">
-			                                                                    J
-			                                                                </div>
-			                                                                <div class="profileBox__Body">
-			                                                                    <div class="flex_ flex_space align_center flex_wrap">
-			                                                                        <h5 class="m-0">
-			                                                                            Jason
-			                                                                            <span>Verified
-			                                                                                Buyer</span>
-			                                                                        </h5>
-			                                                                        <b>03/04/22</b>
-			                                                                    </div>
-
-			                                                                    <ul class="list flex_ startlist gap-1">
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li>
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                    </ul>
-			                                                                </div>
-			                                                            </div>
-			                                                            <!-- close profileBox  -->
-			                                                            <h4 class="m-0">
-			                                                                Top Notch
-			                                                                Coatin
-			                                                            </h4>
-			                                                            <p>
-			                                                                This stuff
-			                                                                is the
-			                                                                shit!!
-			                                                                That’s the
-			                                                                best way I
-			                                                                can describe
-			                                                                it. Lays
-			                                                                down easy,
-			                                                                has a long
-			                                                                flash time,
-			                                                                and the
-			                                                                results are
-			                                                                out of this
-			                                                                world! Not
-			                                                                only is the
-			                                                                coating top
-			                                                                notch but
-			                                                                their
-			                                                                customer
-			                                                                service is
-			                                                                just as
-			                                                                awesome.
-			                                                                Super fast
-			                                                                shipping and
-			                                                                if you have
-			                                                                any issues
-			                                                                whatsoever
-			                                                                they’re
-			                                                                quick to get
-			                                                                it resolved.
-			                                                                I can’t
-			                                                                think of any
-			                                                                reason to
-			                                                                use... >
-			                                                            </p>
-
-			                                                            <ul class="list flex_ likeclick flex_space align_center flex_wrap">
-			                                                                <li class="flex_ align_center flex_wrap gap-2">
-			                                                                    <a href="#" class="sharebtn">
-			                                                                        <i class="fa-regular fa-share-from-square"></i>
-			                                                                        <span>Share</span></a>
-			                                                                    <div class="sharebtndisplay d-none">
-			                                                                        <ul class="list flex_ gap-1">
-			                                                                            <li>
-			                                                                                <a href="#">Facebook</a>
-			                                                                            </li>
-			                                                                            <li>
-			                                                                                <a href="#">Twitter</a>
-			                                                                            </li>
-			                                                                            <li>
-			                                                                                <a href="#">Linkdin</a>
-			                                                                            </li>
-			                                                                        </ul>
-			                                                                    </div>
-			                                                                </li>
-			                                                                <li class="flex_ align_center flex_wrap gap-2">
-			                                                                    <p class="m-0">
-			                                                                        Was
-			                                                                        This
-			                                                                        Review
-			                                                                        Helpful?
-			                                                                    </p>
-			                                                                    <ul class="list flex_ align_center gap-1">
-			                                                                        <li>
-			                                                                            <a href="#" class="countup"><i
-			                                                                                    class="fa-solid fa-thumbs-up"></i>
-			                                                                                <span>0</span></a>
-			                                                                        </li>
-			                                                                        <li>
-			                                                                            <a href="#" class="countdown"><i
-			                                                                                    class="fa-solid fa-thumbs-down"></i>
-			                                                                                <span>0</span></a>
-			                                                                        </li>
-			                                                                    </ul>
-			                                                                </li>
-			                                                            </ul>
-			                                                        </div>
-			                                                    </div>
-			                                                </div>
-			                                            </div>
-			                                        </li>
-			                                        <li>
-			                                            <a href="#inline2" class="conn_img">
-			                                                <img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983450/square.jpg?1659888633"
-			                                                    alt="" /></a>
-			                                            <div class="d-none" id="inline2">
-			                                                <div class="modalBox flex_">
-			                                                    <div class="left">
-			                                                        <div class="swiper mySwiper">
-			                                                            <div class="swiper-wrapper">
-			                                                                <div class="swiper-slide">
-			                                                                    <img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983426/original.jpg?1659888625"
-			                                                                        alt="" />
-			                                                                </div>
-			                                                                <div class="swiper-slide">
-			                                                                    <img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983426/original.jpg?1659888625"
-			                                                                        alt="" />
-			                                                                </div>
-			                                                            </div>
-			                                                            <div class="swiper-pagination"></div>
-			                                                        </div>
-			                                                    </div>
-			                                                    <div class="right">
-			                                                        <div class="tabBodyBox__inner-Box">
-			                                                            <div class="profileBox flex_ align_center">
-			                                                                <div class="profileBox__img">
-			                                                                    J
-			                                                                </div>
-			                                                                <div class="profileBox__Body">
-			                                                                    <div class="flex_ flex_space align_center flex_wrap">
-			                                                                        <h5 class="m-0">
-			                                                                            Jason
-			                                                                            <span>Verified
-			                                                                                Buyer</span>
-			                                                                        </h5>
-			                                                                        <b>03/04/22</b>
-			                                                                    </div>
-
-			                                                                    <ul class="list flex_ startlist gap-1">
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li>
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                    </ul>
-			                                                                </div>
-			                                                            </div>
-			                                                            <!-- close profileBox  -->
-			                                                            <h4 class="m-0">
-			                                                                Top Notch
-			                                                                Coatin
-			                                                            </h4>
-			                                                            <p>
-			                                                                This stuff
-			                                                                is the
-			                                                                shit!!
-			                                                                That’s the
-			                                                                best way I
-			                                                                can describe
-			                                                                it. Lays
-			                                                                down easy,
-			                                                                has a long
-			                                                                flash time,
-			                                                                and the
-			                                                                results are
-			                                                                out of this
-			                                                                world! Not
-			                                                                only is the
-			                                                                coating top
-			                                                                notch but
-			                                                                their
-			                                                                customer
-			                                                                service is
-			                                                                just as
-			                                                                awesome.
-			                                                                Super fast
-			                                                                shipping and
-			                                                                if you have
-			                                                                any issues
-			                                                                whatsoever
-			                                                                they’re
-			                                                                quick to get
-			                                                                it resolved.
-			                                                                I can’t
-			                                                                think of any
-			                                                                reason to
-			                                                                use... >
-			                                                            </p>
-
-			                                                            <ul class="list flex_ likeclick flex_space align_center flex_wrap">
-			                                                                <li class="flex_ align_center flex_wrap gap-2">
-			                                                                    <a href="#" class="sharebtn">
-			                                                                        <i class="fa-regular fa-share-from-square"></i>
-			                                                                        <span>Share</span></a>
-			                                                                    <div class="sharebtndisplay d-none">
-			                                                                        <ul class="list flex_ gap-1">
-			                                                                            <li>
-			                                                                                <a href="#">Facebook</a>
-			                                                                            </li>
-			                                                                            <li>
-			                                                                                <a href="#">Twitter</a>
-			                                                                            </li>
-			                                                                            <li>
-			                                                                                <a href="#">Linkdin</a>
-			                                                                            </li>
-			                                                                        </ul>
-			                                                                    </div>
-			                                                                </li>
-			                                                                <li class="flex_ align_center flex_wrap gap-2">
-			                                                                    <p class="m-0">
-			                                                                        Was
-			                                                                        This
-			                                                                        Review
-			                                                                        Helpful?
-			                                                                    </p>
-			                                                                    <ul class="list flex_ align_center gap-1">
-			                                                                        <li>
-			                                                                            <a href="#" class="countup"><i
-			                                                                                    class="fa-solid fa-thumbs-up"></i>
-			                                                                                <span>0</span></a>
-			                                                                        </li>
-			                                                                        <li>
-			                                                                            <a href="#" class="countdown"><i
-			                                                                                    class="fa-solid fa-thumbs-down"></i>
-			                                                                                <span>0</span></a>
-			                                                                        </li>
-			                                                                    </ul>
-			                                                                </li>
-			                                                            </ul>
-			                                                        </div>
-			                                                    </div>
-			                                                </div>
-			                                            </div>
-			                                        </li>
-			                                        <li>
-			                                            <a href="#inline3" class="conn_img">
-			                                                <img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983450/square.jpg?1659888633"
-			                                                    alt="" /></a>
-			                                            <div class="d-none" id="inline3">
-			                                                <div class="modalBox flex_">
-			                                                    <div class="left">
-			                                                        <div class="swiper mySwiper">
-			                                                            <div class="swiper-wrapper">
-			                                                                <div class="swiper-slide">
-			                                                                    <img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983426/original.jpg?1659888625"
-			                                                                        alt="" />
-			                                                                </div>
-			                                                                <div class="swiper-slide">
-			                                                                    <img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983426/original.jpg?1659888625"
-			                                                                        alt="" />
-			                                                                </div>
-			                                                            </div>
-			                                                            <div class="swiper-pagination"></div>
-			                                                        </div>
-			                                                    </div>
-			                                                    <div class="right">
-			                                                        <div class="tabBodyBox__inner-Box">
-			                                                            <div class="profileBox flex_ align_center">
-			                                                                <div class="profileBox__img">
-			                                                                    J
-			                                                                </div>
-			                                                                <div class="profileBox__Body">
-			                                                                    <div class="flex_ flex_space align_center flex_wrap">
-			                                                                        <h5 class="m-0">
-			                                                                            Jason
-			                                                                            <span>Verified
-			                                                                                Buyer</span>
-			                                                                        </h5>
-			                                                                        <b>03/04/22</b>
-			                                                                    </div>
-
-			                                                                    <ul class="list flex_ startlist gap-1">
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li>
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                    </ul>
-			                                                                </div>
-			                                                            </div>
-			                                                            <!-- close profileBox  -->
-			                                                            <h4 class="m-0">
-			                                                                Top Notch
-			                                                                Coatin
-			                                                            </h4>
-			                                                            <p>
-			                                                                This stuff
-			                                                                is the
-			                                                                shit!!
-			                                                                That’s the
-			                                                                best way I
-			                                                                can describe
-			                                                                it. Lays
-			                                                                down easy,
-			                                                                has a long
-			                                                                flash time,
-			                                                                and the
-			                                                                results are
-			                                                                out of this
-			                                                                world! Not
-			                                                                only is the
-			                                                                coating top
-			                                                                notch but
-			                                                                their
-			                                                                customer
-			                                                                service is
-			                                                                just as
-			                                                                awesome.
-			                                                                Super fast
-			                                                                shipping and
-			                                                                if you have
-			                                                                any issues
-			                                                                whatsoever
-			                                                                they’re
-			                                                                quick to get
-			                                                                it resolved.
-			                                                                I can’t
-			                                                                think of any
-			                                                                reason to
-			                                                                use... >
-			                                                            </p>
-
-			                                                            <ul class="list flex_ likeclick flex_space align_center flex_wrap">
-			                                                                <li class="flex_ align_center flex_wrap gap-2">
-			                                                                    <a href="#" class="sharebtn">
-			                                                                        <i class="fa-regular fa-share-from-square"></i>
-			                                                                        <span>Share</span></a>
-			                                                                    <div class="sharebtndisplay d-none">
-			                                                                        <ul class="list flex_ gap-1">
-			                                                                            <li>
-			                                                                                <a href="#">Facebook</a>
-			                                                                            </li>
-			                                                                            <li>
-			                                                                                <a href="#">Twitter</a>
-			                                                                            </li>
-			                                                                            <li>
-			                                                                                <a href="#">Linkdin</a>
-			                                                                            </li>
-			                                                                        </ul>
-			                                                                    </div>
-			                                                                </li>
-			                                                                <li class="flex_ align_center flex_wrap gap-2">
-			                                                                    <p class="m-0">
-			                                                                        Was
-			                                                                        This
-			                                                                        Review
-			                                                                        Helpful?
-			                                                                    </p>
-			                                                                    <ul class="list flex_ align_center gap-1">
-			                                                                        <li>
-			                                                                            <a href="#" class="countup"><i
-			                                                                                    class="fa-solid fa-thumbs-up"></i>
-			                                                                                <span>0</span></a>
-			                                                                        </li>
-			                                                                        <li>
-			                                                                            <a href="#" class="countdown"><i
-			                                                                                    class="fa-solid fa-thumbs-down"></i>
-			                                                                                <span>0</span></a>
-			                                                                        </li>
-			                                                                    </ul>
-			                                                                </li>
-			                                                            </ul>
-			                                                        </div>
-			                                                    </div>
-			                                                </div>
-			                                            </div>
-			                                        </li>
-			                                        <li>
-			                                            <a href="#inline4" class="conn_img">
-			                                                <img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983450/square.jpg?1659888633"
-			                                                    alt="" /></a>
-			                                            <div class="d-none" id="inline4">
-			                                                <div class="modalBox flex_">
-			                                                    <div class="left">
-			                                                        <div class="swiper mySwiper">
-			                                                            <div class="swiper-wrapper">
-			                                                                <div class="swiper-slide">
-			                                                                    <img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983426/original.jpg?1659888625"
-			                                                                        alt="" />
-			                                                                </div>
-			                                                                <div class="swiper-slide">
-			                                                                    <img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983426/original.jpg?1659888625"
-			                                                                        alt="" />
-			                                                                </div>
-			                                                            </div>
-			                                                            <div class="swiper-pagination"></div>
-			                                                        </div>
-			                                                    </div>
-			                                                    <div class="right">
-			                                                        <div class="tabBodyBox__inner-Box">
-			                                                            <div class="profileBox flex_ align_center">
-			                                                                <div class="profileBox__img">
-			                                                                    J
-			                                                                </div>
-			                                                                <div class="profileBox__Body">
-			                                                                    <div class="flex_ flex_space align_center flex_wrap">
-			                                                                        <h5 class="m-0">
-			                                                                            Jason
-			                                                                            <span>Verified
-			                                                                                Buyer</span>
-			                                                                        </h5>
-			                                                                        <b>03/04/22</b>
-			                                                                    </div>
-
-			                                                                    <ul class="list flex_ startlist gap-1">
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li class="active">
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                        <li>
-			                                                                            <i class="fa-solid fa-star"></i>
-			                                                                        </li>
-			                                                                    </ul>
-			                                                                </div>
-			                                                            </div>
-			                                                            <!-- close profileBox  -->
-			                                                            <h4 class="m-0">
-			                                                                Top Notch
-			                                                                Coatin
-			                                                            </h4>
-			                                                            <p>
-			                                                                This stuff
-			                                                                is the
-			                                                                shit!!
-			                                                                That’s the
-			                                                                best way I
-			                                                                can describe
-			                                                                it. Lays
-			                                                                down easy,
-			                                                                has a long
-			                                                                flash time,
-			                                                                and the
-			                                                                results are
-			                                                                out of this
-			                                                                world! Not
-			                                                                only is the
-			                                                                coating top
-			                                                                notch but
-			                                                                their
-			                                                                customer
-			                                                                service is
-			                                                                just as
-			                                                                awesome.
-			                                                                Super fast
-			                                                                shipping and
-			                                                                if you have
-			                                                                any issues
-			                                                                whatsoever
-			                                                                they’re
-			                                                                quick to get
-			                                                                it resolved.
-			                                                                I can’t
-			                                                                think of any
-			                                                                reason to
-			                                                                use... >
-			                                                            </p>
-
-			                                                            <ul class="list flex_ likeclick flex_space align_center flex_wrap">
-			                                                                <li class="flex_ align_center flex_wrap gap-2">
-			                                                                    <a href="#" class="sharebtn">
-			                                                                        <i class="fa-regular fa-share-from-square"></i>
-			                                                                        <span>Share</span></a>
-			                                                                    <div class="sharebtndisplay d-none">
-			                                                                        <ul class="list flex_ gap-1">
-			                                                                            <li>
-			                                                                                <a href="#">Facebook</a>
-			                                                                            </li>
-			                                                                            <li>
-			                                                                                <a href="#">Twitter</a>
-			                                                                            </li>
-			                                                                            <li>
-			                                                                                <a href="#">Linkdin</a>
-			                                                                            </li>
-			                                                                        </ul>
-			                                                                    </div>
-			                                                                </li>
-			                                                                <li class="flex_ align_center flex_wrap gap-2">
-			                                                                    <p class="m-0">
-			                                                                        Was
-			                                                                        This
-			                                                                        Review
-			                                                                        Helpful?
-			                                                                    </p>
-			                                                                    <ul class="list flex_ align_center gap-1">
-			                                                                        <li>
-			                                                                            <a href="#" class="countup"><i
-			                                                                                    class="fa-solid fa-thumbs-up"></i>
-			                                                                                <span>0</span></a>
-			                                                                        </li>
-			                                                                        <li>
-			                                                                            <a href="#" class="countdown"><i
-			                                                                                    class="fa-solid fa-thumbs-down"></i>
-			                                                                                <span>0</span></a>
-			                                                                        </li>
-			                                                                    </ul>
-			                                                                </li>
-			                                                            </ul>
-			                                                        </div>
-			                                                    </div>
-			                                                </div>
-			                                            </div>
-			                                        </li>
-			                                    </ul>
-			                                    <ul class="list flex_ likeclick flex_space align_center flex_wrap">
-			                                        <li class="flex_ align_center flex_wrap gap-2">
-			                                            <a href="#" class="sharebtn">
-			                                                <i class="fa-regular fa-share-from-square"></i>
-			                                                <span>Share</span></a>
-			                                            <div class="sharebtndisplay d-none">
-			                                                <ul class="list flex_ gap-1">
-			                                                    <li>
-			                                                        <a href="#">Facebook</a>
-			                                                    </li>
-			                                                    <li>
-			                                                        <a href="#">Twitter</a>
-			                                                    </li>
-			                                                    <li>
-			                                                        <a href="#">Linkdin</a>
-			                                                    </li>
-			                                                </ul>
-			                                            </div>
-			                                        </li>
-			                                        <li class="flex_ align_center flex_wrap gap-2">
-			                                            <p class="m-0">
-			                                                Was This Review Helpful?
-			                                            </p>
-			                                            <ul class="list flex_ align_center gap-1">
-			                                                <li>
-			                                                    <a href="#" class="countup"><i class="fa-solid fa-thumbs-up"></i>
-			                                                        <span>0</span></a>
-			                                                </li>
-			                                                <li>
-			                                                    <a href="#" class="countdown"><i
-			                                                            class="fa-solid fa-thumbs-down"></i>
-			                                                        <span>0</span></a>
-			                                                </li>
-			                                            </ul>
-			                                        </li>
-			                                    </ul>
-			                                </div>
-			                                <ul id="border-pagination">
-			                                    <li><a class="" href="#">«</a></li>
-			                                    <li><a href="#">1</a></li>
-			                                    <li>
-			                                        <a href="#" class="active">2</a>
-			                                    </li>
-			                                    <li><a href="#">3</a></li>
-			                                    <li><a href="#">4</a></li>
-			                                    <li><a href="#">5</a></li>
-			                                    <li><a href="#">6</a></li>
-			                                    <li><a href="#">7</a></li>
-			                                    <li><a href="#">»</a></li>
-			                                </ul>
-			                            </div>
-			                        </div>
-			                        <div class="tabBodyBox" id="Questions">
-			                            <div class="questionBox">
-			                                <div class="profileBox flex_ align_center">
-			                                    <div class="profileBox__img">J</div>
-			                                    <div class="profileBox__Body">
-			                                        <div class="flex_ flex_space align_center flex_wrap">
-			                                            <h5 class="m-0">
-			                                                Tom
-			                                                <span>Verified Buyer</span>
-			                                            </h5>
-			                                            <b>03/04/22</b>
-			                                        </div>
-			                                        <b><span>Q: </span> Does this work
-			                                            on glass also?</b>
-			                                    </div>
-			                                </div>
-			                                <!-- close profileBox  -->
-			                                <div class="questionBox__answer">
-			                                    <div class="questionBox__answerhe">
-			                                        <i class="fa-solid fa-message"></i>
-			                                        Answer (<span>0</span>)
-			                                    </div>
-			                                    <div class="questionBox__answer-Box">
-			                                        <div class="profileBox flex_ align_center">
-			                                            <div class="profileBox__img">
-			                                                J
-			                                            </div>
-			                                            <div class="profileBox__Body">
-			                                                <div class="flex_ flex_space align_center flex_wrap">
-			                                                    <h5 class="m-0">
-			                                                        Jason
-			                                                        <span>Verified
-			                                                            Buyer</span>
-			                                                    </h5>
-			                                                    <b>03/04/22</b>
-			                                                </div>
-
-			                                                <p>
-			                                                    A: Absolutely looks
-			                                                    beautiful. Time will
-			                                                    tell on the length of
-			                                                    gloss.
-			                                                </p>
-			                                            </div>
-			                                        </div>
-			                                        <ul class="list flex_ likeclick flex_end align_center">
-			                                            <li class="flex_ align_center flex_wrap gap-2">
-			                                                <p class="m-0">
-			                                                    Was This Review Helpful?
-			                                                </p>
-			                                                <ul class="list flex_ align_center gap-1">
-			                                                    <li>
-			                                                        <a href="#" class="countup"><i
-			                                                                class="fa-solid fa-thumbs-up"></i>
-			                                                            <span>0</span></a>
-			                                                    </li>
-			                                                    <li>
-			                                                        <a href="#" class="countdown"><i
-			                                                                class="fa-solid fa-thumbs-down"></i>
-			                                                            <span>0</span></a>
-			                                                    </li>
-			                                                </ul>
-			                                            </li>
-			                                        </ul>
-			                                    </div>
-			                                </div>
-			                            </div>
-			                        </div>
+									<div class='${this.attr_prefix}main--contents-render-placement'>
+										${this.getReviewPart()}
+									</div>
+			                        
 			                    </div>
 			                </div>
 			            </div>
@@ -2326,6 +646,921 @@ class Affiliateambassadorteam_RQ_Feature{
 		targetPlace.innerHTML = html
 
 		body.insertAdjacentHTML("beforeend", this.scripts)
+	}
+
+	//review module top part
+	static getReviewTopPartHTML(){
+		return `<div class="${this.attr_prefix}reviewSection__Body">
+		<div class="${this.attr_prefix}reviewSection__Body--box ${this.attr_prefix}flex_ ${this.attr_prefix}flex_space">
+			<div class="${this.attr_prefix}left">
+				<div class="${this.attr_prefix}flex_ ${this.attr_prefix}gap-4 ${this.attr_prefix}align_center">
+					<div>
+						<h2>5.0</h2>
+						<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}startlist ${this.attr_prefix}flex_center ${this.attr_prefix}gap-1">
+							<li class="${this.attr_prefix}active">
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li class="${this.attr_prefix}active">
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li class="${this.attr_prefix}active">
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li class="${this.attr_prefix}active">
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li><i class="fa-solid fa-star"></i></li>
+						</ul>
+						<div>
+							<b>535</b> <span>Reviews</span> | <b>7</b>
+							<span>Q&As</span>
+						</div>
+					</div>
+					<div>
+						<ul class="${this.attr_prefix}list ${this.attr_prefix}ratingList">
+							<li class="${this.attr_prefix}w-80">
+								<b>5</b>
+								<div><span></span></div>
+							</li>
+							<li class="${this.attr_prefix}w-60">
+								<b>4</b>
+								<div><span></span></div>
+							</li>
+							<li class="${this.attr_prefix}w-40">
+								<b>3</b>
+								<div><span></span></div>
+							</li>
+							<li class="${this.attr_prefix}w-20">
+								<b>2</b>
+								<div><span></span></div>
+							</li>
+							<li class="${this.attr_prefix}w-0">
+								<b>1</b>
+								<div><span></span></div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="${this.attr_prefix}right">
+				<a href="#" class="${this.attr_prefix}btn ${this.attr_prefix}flex_ ${this.attr_prefix}gap-1 ${this.attr_prefix}align_center">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: #fff"><path d="M20 2H4c-1.103 0-2 .897-2 2v18l5.333-4H20c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zm0 14H6.667L4 18V4h16v12z"></path></svg>
+					<span>Ask A Question</span>
+				</a>
+			</div>
+		</div>`
+	}
+
+	//review parts
+	//======================================
+	static getReviewPart(){
+		return `
+		<div class="${this.attr_prefix}tabBodyBox" id="${this.attr_prefix}Reviews">
+		${this.getReviewFilterOptions()}
+
+		<div class="${this.attr_prefix}tabBodyBox__inner">
+			<div class="${this.attr_prefix}flex_ ${this.attr_prefix}flex_space ${this.attr_prefix}align_center">
+				<h4 class="${this.attr_prefix}m-0 ${this.attr_prefix}revicount">
+					535 Reviews
+				</h4>
+				<div class="${this.attr_prefix}dropdown">
+					<button class="${this.attr_prefix}btn ${this.attr_prefix}btn-secondary ${this.attr_prefix}flex_ ${this.attr_prefix}align_center ${this.attr_prefix}flex_space ${this.attr_prefix}gap-1" onclick="Affiliateambassadorteam_RQ_Feature.filterOptionDropdownToggle(this)">
+						<span> Sort By</span>
+						<i class="fa-solid fa-chevron-down"></i>
+					</button>
+					<div class="${this.attr_prefix}dropdown-menu ${this.attr_prefix}d-none">
+						<a class="${this.attr_prefix}dropdown-item" href="#">Newest</a>
+						<a class="${this.attr_prefix}dropdown-item" href="#">Highest Rating</a>
+						<a class="${this.attr_prefix}dropdown-item" href="#">Lowest Rating</a>
+						<a class="${this.attr_prefix}dropdown-item" href="#">Most Votes</a>
+						<a class="${this.attr_prefix}dropdown-item" href="#">Least Votes</a>
+					</div>
+				</div>
+			</div>
+			
+			<div class="${this.attr_prefix}tabBodyBox__inner-Box">
+				<div class="${this.attr_prefix}profileBox ${this.attr_prefix}flex_ ${this.attr_prefix}align_center">
+					<div class="${this.attr_prefix}profileBox__img">J</div>
+					<div class="${this.attr_prefix}profileBox__Body">
+						<div class="${this.attr_prefix}flex_ ${this.attr_prefix}flex_space ${this.attr_prefix}align_center ${this.attr_prefix}flex_wrap">
+							<h5 class="${this.attr_prefix}m-0">
+								Jason
+								<span>Verified Buyer</span>
+							</h5>
+							<b>03/04/22</b>
+						</div>
+
+						<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}startlist ${this.attr_prefix}gap-1">
+							<li class="${this.attr_prefix}active">
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li class="${this.attr_prefix}active">
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li class="${this.attr_prefix}active">
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li class="${this.attr_prefix}active">
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li>
+								<i class="fa-solid fa-star"></i>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- close profileBox  -->
+
+				<h4 class="m-0">Top Notch Coatin</h4>
+				<p>
+					This stuff is the shit!! That’s the
+					best way I can describe it. Lays
+					down easy, has a long flash time,
+					and the results are out of this
+					world! Not only is the coating top
+					notch but their customer service is
+					just as awesome. Super fast shipping
+					and if you have any issues
+					whatsoever they’re quick to get it
+					resolved. I can’t think of any
+					reason to use...
+					<a href="#">Read More</a>
+				</p>
+				<ul class="${this.attr_prefix}list ${this.attr_prefix}imgBox ${this.attr_prefix}grid ${this.attr_prefix}grid_4 ${this.attr_prefix}gap-4 ${this.attr_prefix}my-2">
+					<li>
+						<a href="#inline1" class="${this.attr_prefix}conn_img">
+							<img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983450/square.jpg?1659888633"
+								alt="" />
+						</a>
+						<div class="${this.attr_prefix}d-none" id="${this.attr_prefix}inline1">
+							<div class="${this.attr_prefix}modalBox flex_">
+								<div class="${this.attr_prefix}left">
+									<div class="${this.attr_prefix}swiper ${this.attr_prefix}mySwiper">
+										<div class="${this.attr_prefix}swiper-wrapper">
+											<div class="${this.attr_prefix}swiper-slide">
+												<img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983426/original.jpg?1659888625"
+													alt="" />
+											</div>
+											<div class="${this.attr_prefix}swiper-slide">
+												<img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983426/original.jpg?1659888625"
+													alt="" />
+											</div>
+										</div>
+										<div class="${this.attr_prefix}swiper-pagination"></div>
+									</div>
+								</div>
+								<div class="${this.attr_prefix}right">
+									<div class="${this.attr_prefix}tabBodyBox__inner-Box">
+										<div class="${this.attr_prefix}profileBox ${this.attr_prefix}flex_ ${this.attr_prefix}align_center">
+											<div class="${this.attr_prefix}profileBox__img">
+												J
+											</div>
+											<div class="${this.attr_prefix}profileBox__Body">
+												<div class="${this.attr_prefix}flex_ ${this.attr_prefix}flex_space ${this.attr_prefix}align_center ${this.attr_prefix}flex_wrap">
+													<h5 class="${this.attr_prefix}m-0">
+														Jason
+														<span>Verified Buyer</span>
+													</h5>
+													<b>03/04/22</b>
+												</div>
+
+												<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}startlist ${this.attr_prefix}gap-1">
+													<li class="${this.attr_prefix}active">
+														<i class="fa-solid fa-star"></i>
+													</li>
+													<li class="${this.attr_prefix}active">
+														<i class="fa-solid fa-star"></i>
+													</li>
+													<li class="${this.attr_prefix}active">
+														<i class="fa-solid fa-star"></i>
+													</li>
+													<li class="${this.attr_prefix}active">
+														<i class="fa-solid fa-star"></i>
+													</li>
+													<li>
+														<i class="fa-solid fa-star"></i>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<!-- close profileBox  -->
+
+										<h4 class="${this.attr_prefix}m-0">Top Notch Coatin</h4>
+										<p>
+											This stuff is the shit!!
+											That’s the
+											best way I
+											can describe
+											it. Lays
+											down easy,
+											has a long
+											flash time,
+											and the
+											results are
+											out of this
+											world! Not
+											only is the
+											coating top
+											notch but
+											their
+											customer
+											service is
+											just as
+											awesome.
+											Super fast
+											shipping and
+											if you have
+											any issues
+											whatsoever
+											they’re
+											quick to get
+											it resolved.
+											I can’t
+											think of any
+											reason to
+											use... >
+										</p>
+
+										<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}likeclick ${this.attr_prefix}flex_space ${this.attr_prefix}align_center ${this.attr_prefix}flex_wrap">
+											<li class="${this.attr_prefix}flex_ ${this.attr_prefix}align_center ${this.attr_prefix}flex_wrap ${this.attr_prefix}gap-2">
+												<a href="#" class="${this.attr_prefix}sharebtn">
+													<i class="fa-regular fa-share-from-square"></i>
+													<span>Share</span>
+												</a>
+												<div class="${this.attr_prefix}sharebtndisplay ${this.attr_prefix}d-none">
+													<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ gap-1">
+														<li>
+															<a href="#">Facebook</a>
+														</li>
+														<li>
+															<a href="#">Twitter</a>
+														</li>
+														<li>
+															<a href="#">Linkdin</a>
+														</li>
+													</ul>
+												</div>
+											</li>
+											<li class="${this.attr_prefix}flex_ ${this.attr_prefix}align_center ${this.attr_prefix}flex_wrap ${this.attr_prefix}gap-2">
+												<p class="${this.attr_prefix}m-0">
+													Was
+													This
+													Review
+													Helpful?
+												</p>
+												<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}align_center ${this.attr_prefix}gap-1">
+													<li>
+														<a href="#" class="${this.attr_prefix}countup">
+															<i class="fa-solid fa-thumbs-up"></i>
+															<span>0</span>
+														</a>
+													</li>
+													<li>
+														<a href="#" class="${this.attr_prefix}countdown">
+															<i class="fa-solid fa-thumbs-down"></i>
+															<span>0</span>
+														</a>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<a href="#inline2" class="${this.attr_prefix}conn_img">
+							<img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983450/square.jpg?1659888633"
+								alt="" />
+						</a>
+						<div class="${this.attr_prefix}d-none" id="${this.attr_prefix}inline2">
+							<div class="${this.attr_prefix}modalBox ${this.attr_prefix}flex_">
+								<div class="${this.attr_prefix}left">
+									<div class="${this.attr_prefix}swiper ${this.attr_prefix}mySwiper">
+										<div class="${this.attr_prefix}swiper-wrapper">
+											<div class="${this.attr_prefix}swiper-slide">
+												<img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983426/original.jpg?1659888625"
+													alt="" />
+											</div>
+											<div class="${this.attr_prefix}swiper-slide">
+												<img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983426/original.jpg?1659888625"
+													alt="" />
+											</div>
+										</div>
+										<div class="${this.attr_prefix}swiper-pagination"></div>
+									</div>
+								</div>
+								<div class="${this.attr_prefix}right">
+									<div class="${this.attr_prefix}tabBodyBox__inner-Box">
+										<div class="${this.attr_prefix}profileBox ${this.attr_prefix}flex_ ${this.attr_prefix}align_center">
+											<div class="${this.attr_prefix}profileBox__img">
+												J
+											</div>
+											<div class="${this.attr_prefix}profileBox__Body">
+												<div class="${this.attr_prefix}flex_ ${this.attr_prefix}flex_space ${this.attr_prefix}align_center ${this.attr_prefix}flex_wrap">
+													<h5 class="${this.attr_prefix}m-0">
+														Jason
+														<span>Verified Buyer</span>
+													</h5>
+													<b>03/04/22</b>
+												</div>
+
+												<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}startlist ${this.attr_prefix}gap-1">
+													<li class="${this.attr_prefix}active">
+														<i class="fa-solid fa-star"></i>
+													</li>
+													<li class="${this.attr_prefix}active">
+														<i class="fa-solid fa-star"></i>
+													</li>
+													<li class="${this.attr_prefix}active">
+														<i class="fa-solid fa-star"></i>
+													</li>
+													<li class="${this.attr_prefix}active">
+														<i class="fa-solid fa-star"></i>
+													</li>
+													<li>
+														<i class="fa-solid fa-star"></i>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<!-- close profileBox  -->
+
+										<h4 class="m-0"> Top Notch Coatin</h4>
+										<p>
+											This stuff is the shit!!
+											That’s the
+											best way I
+											can describe
+											it. Lays
+											down easy,
+											has a long
+											flash time,
+											and the
+											results are
+											out of this
+											world! Not
+											only is the
+											coating top
+											notch but
+											their
+											customer
+											service is
+											just as
+											awesome.
+											Super fast
+											shipping and
+											if you have
+											any issues
+											whatsoever
+											they’re
+											quick to get
+											it resolved.
+											I can’t
+											think of any
+											reason to
+											use... >
+										</p>
+
+										<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}likeclick ${this.attr_prefix}flex_space ${this.attr_prefix}align_center ${this.attr_prefix}flex_wrap">
+											<li class="${this.attr_prefix}flex_ ${this.attr_prefix}align_center ${this.attr_prefix}flex_wrap ${this.attr_prefix}gap-2">
+												<a href="#" class="${this.attr_prefix}sharebtn">
+													<i class="fa-regular fa-share-from-square"></i>
+													<span>Share</span>
+												</a>
+												<div class="${this.attr_prefix}sharebtndisplay ${this.attr_prefix}d-none">
+													<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}gap-1">
+														<li>
+															<a href="#">Facebook</a>
+														</li>
+														<li>
+															<a href="#">Twitter</a>
+														</li>
+														<li>
+															<a href="#">Linkdin</a>
+														</li>
+													</ul>
+												</div>
+											</li>
+											<li class="${this.attr_prefix}flex_ ${this.attr_prefix}align_center ${this.attr_prefix}flex_wrap ${this.attr_prefix}gap-2">
+												<p class="${this.attr_prefix}m-0">
+													Was
+													This
+													Review
+													Helpful?
+												</p>
+												<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}align_center ${this.attr_prefix}gap-1">
+													<li>
+														<a href="#" class="${this.attr_prefix}countup">
+															<i class="fa-solid fa-thumbs-up"></i>
+															<span>0</span></a>
+													</li>
+													<li>
+														<a href="#" class="${this.attr_prefix}countdown">
+															<i class="fa-solid fa-thumbs-down"></i>
+															<span>0</span>
+														</a>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<a href="#inline3" class="${this.attr_prefix}conn_img">
+							<img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983450/square.jpg?1659888633"
+								alt="" />
+						</a>
+						<div class="${this.attr_prefix}d-none" id="${this.attr_prefix}inline3">
+							<div class="${this.attr_prefix}modalBox ${this.attr_prefix}flex_">
+								<div class="${this.attr_prefix}left">
+									<div class="${this.attr_prefix}swiper ${this.attr_prefix}mySwiper">
+										<div class="${this.attr_prefix}swiper-wrapper">
+											<div class="swiper-slide">
+												<img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983426/original.jpg?1659888625"
+													alt="" />
+											</div>
+											<div class="${this.attr_prefix}swiper-slide">
+												<img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983426/original.jpg?1659888625"
+													alt="" />
+											</div>
+										</div>
+										<div class="${this.attr_prefix}swiper-pagination"></div>
+									</div>
+								</div>
+								<div class="${this.attr_prefix}right">
+									<div class="${this.attr_prefix}tabBodyBox__inner-Box">
+										<div class="${this.attr_prefix}profileBox ${this.attr_prefix}flex_ ${this.attr_prefix}align_center">
+											<div class="${this.attr_prefix}profileBox__img">
+												J
+											</div>
+											<div class="${this.attr_prefix}profileBox__Body">
+												<div class="${this.attr_prefix}flex_ ${this.attr_prefix}flex_space ${this.attr_prefix}align_center ${this.attr_prefix}flex_wrap">
+													<h5 class="${this.attr_prefix}m-0">
+														Jason
+														<span>Verified Buyer</span>
+													</h5>
+													<b>03/04/22</b>
+												</div>
+
+												<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}startlist ${this.attr_prefix}gap-1">
+													<li class="${this.attr_prefix}active">
+														<i class="fa-solid fa-star"></i>
+													</li>
+													<li class="${this.attr_prefix}active">
+														<i class="fa-solid fa-star"></i>
+													</li>
+													<li class="${this.attr_prefix}active">
+														<i class="fa-solid fa-star"></i>
+													</li>
+													<li class="${this.attr_prefix}active">
+														<i class="fa-solid fa-star"></i>
+													</li>
+													<li>
+														<i class="fa-solid fa-star"></i>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<!-- close profileBox  -->
+
+										<h4 class="m-0">Top Notch Coatin</h4>
+										<p>
+											This stuff
+											is the
+											shit!!
+											That’s the
+											best way I
+											can describe
+											it. Lays
+											down easy,
+											has a long
+											flash time,
+											and the
+											results are
+											out of this
+											world! Not
+											only is the
+											coating top
+											notch but
+											their
+											customer
+											service is
+											just as
+											awesome.
+											Super fast
+											shipping and
+											if you have
+											any issues
+											whatsoever
+											they’re
+											quick to get
+											it resolved.
+											I can’t
+											think of any
+											reason to
+											use... >
+										</p>
+
+										<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}likeclick ${this.attr_prefix}flex_space ${this.attr_prefix}align_center ${this.attr_prefix}flex_wrap">
+											<li class="${this.attr_prefix}flex_ ${this.attr_prefix}align_center ${this.attr_prefix}flex_wrap ${this.attr_prefix}gap-2">
+												<a href="#" class="${this.attr_prefix}sharebtn">
+													<i class="fa-regular fa-share-from-square"></i>
+													<span>Share</span>
+												</a>
+												<div class="${this.attr_prefix}sharebtndisplay ${this.attr_prefix}d-none">
+													<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}gap-1">
+														<li>
+															<a href="#">Facebook</a>
+														</li>
+														<li>
+															<a href="#">Twitter</a>
+														</li>
+														<li>
+															<a href="#">Linkdin</a>
+														</li>
+													</ul>
+												</div>
+											</li>
+											<li class="${this.attr_prefix}flex_ ${this.attr_prefix}align_center ${this.attr_prefix}flex_wrap ${this.attr_prefix}gap-2">
+												<p class="${this.attr_prefix}m-0">
+													Was
+													This
+													Review
+													Helpful?
+												</p>
+												<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}align_center ${this.attr_prefix}gap-1">
+													<li>
+														<a href="#" class="${this.attr_prefix}countup">
+															<i class="fa-solid fa-thumbs-up"></i>
+															<span>0</span>
+														</a>
+													</li>
+													<li>
+														<a href="#" class="${this.attr_prefix}countdown">
+															<i class="fa-solid fa-thumbs-down"></i>
+															<span>0</span>
+														</a>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<a href="#inline4" class="${this.attr_prefix}conn_img">
+							<img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983450/square.jpg?1659888633"
+								alt="" />
+						</a>
+						<div class="${this.attr_prefix}d-none" id="${this.attr_prefix}inline4">
+							<div class="${this.attr_prefix}modalBox ${this.attr_prefix}flex_">
+								<div class="${this.attr_prefix}left">
+									<div class="${this.attr_prefix}swiper ${this.attr_prefix}mySwiper">
+										<div class="${this.attr_prefix}swiper-wrapper">
+											<div class="${this.attr_prefix}swiper-slide">
+												<img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983426/original.jpg?1659888625"
+													alt="" />
+											</div>
+											<div class="${this.attr_prefix}swiper-slide">
+												<img src="https://cdn-yotpo-images-production.yotpo.com/Review/390916793/332983426/original.jpg?1659888625"
+													alt="" />
+											</div>
+										</div>
+										<div class="${this.attr_prefix}swiper-pagination"></div>
+									</div>
+								</div>
+								<div class="${this.attr_prefix}right">
+									<div class="${this.attr_prefix}tabBodyBox__inner-Box">
+										<div class="${this.attr_prefix}profileBox ${this.attr_prefix}flex_ ${this.attr_prefix}align_center">
+											<div class="${this.attr_prefix}profileBox__img">
+												J
+											</div>
+											<div class="${this.attr_prefix}profileBox__Body">
+												<div class="${this.attr_prefix}flex_ ${this.attr_prefix}flex_space ${this.attr_prefix}align_center ${this.attr_prefix}flex_wrap">
+													<h5 class="${this.attr_prefix}m-0">
+														Jason
+														<span>Verified Buyer</span>
+													</h5>
+													<b>03/04/22</b>
+												</div>
+
+												<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}startlist ${this.attr_prefix}gap-1">
+													<li class="${this.attr_prefix}active">
+														<i class="fa-solid fa-star"></i>
+													</li>
+													<li class="${this.attr_prefix}active">
+														<i class="fa-solid fa-star"></i>
+													</li>
+													<li class="${this.attr_prefix}active">
+														<i class="fa-solid fa-star"></i>
+													</li>
+													<li class="${this.attr_prefix}active">
+														<i class="fa-solid fa-star"></i>
+													</li>
+													<li>
+														<i class="fa-solid fa-star"></i>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<!-- close profileBox  -->
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}likeclick ${this.attr_prefix}flex_space ${this.attr_prefix}align_center ${this.attr_prefix}flex_wrap">
+					<li class="${this.attr_prefix}flex_ ${this.attr_prefix}align_center ${this.attr_prefix}flex_wrap ${this.attr_prefix}gap-2">
+						<a href="#" class="${this.attr_prefix}sharebtn">
+							<i class="fa-regular fa-share-from-square"></i>
+							<span>Share</span>
+						</a>
+						<div class="${this.attr_prefix}sharebtndisplay ${this.attr_prefix}d-none">
+							<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}gap-1">
+								<li>
+									<a href="#">Facebook</a>
+								</li>
+								<li>
+									<a href="#">Twitter</a>
+								</li>
+								<li>
+									<a href="#">Linkdin</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="${this.attr_prefix}flex_ ${this.attr_prefix}align_center ${this.attr_prefix}flex_wrap ${this.attr_prefix}gap-2">
+						<p class="${this.attr_prefix}m-0">
+							Was This Review Helpful?
+						</p>
+						<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}align_center ${this.attr_prefix}gap-1">
+							<li>
+								<a href="#" class="${this.attr_prefix}countup">
+									<i class="fa-solid fa-thumbs-up"></i>
+									<span>0</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="${this.attr_prefix}countdown">
+									<i class="fa-solid fa-thumbs-down"></i>
+									<span>0</span>
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+			<ul id="${this.attr_prefix}border-pagination">
+				<li><a class="" href="#">«</a></li>
+				<li><a href="#">1</a></li>
+				<li>
+					<a href="#" class="${this.attr_prefix}active">2</a>
+				</li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li><a href="#">6</a></li>
+				<li><a href="#">7</a></li>
+				<li><a href="#">»</a></li>
+			</ul>
+		</div>
+		</div>
+		`
+	}
+
+	//filter options of review
+	static getReviewFilterOptions(){
+		return `<h6 class="${this.attr_prefix}filter">Filter Reviews</h6>
+		<div class="${this.attr_prefix}searchBox">
+			<i class="fa-solid fa-magnifying-glass"></i>
+			<input type="search" placeholder="Search Reviews" class="${this.attr_prefix}searchBox-input"
+				maxlength="120" />
+		</div>
+		<br />
+		<div class="${this.attr_prefix}flex_ ${this.attr_prefix}rati">
+			<div class="${this.attr_prefix}dropdown ${this.attr_prefix}rating">
+				<button class="${this.attr_prefix}btn ${this.attr_prefix}btn-secondary ${this.attr_prefix}flex_ align_center ${this.attr_prefix}flex_space ${this.attr_prefix}gap-1" onclick="Affiliateambassadorteam_RQ_Feature.filterOptionDropdownToggle(this)">
+					<span>Rating</span>
+					<i class="fa-solid fa-chevron-down"></i>
+				</button>
+				<div class="${this.attr_prefix}dropdown-menu ${this.attr_prefix}d-none">
+					<a class="${this.attr_prefix}dropdown-item" href="#">All</a>
+					<a class="${this.attr_prefix}dropdown-item" href="#">
+						<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}startlist ${this.attr_prefix}gap-1">
+							<li class="${this.attr_prefix}active">
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li class="${this.attr_prefix}active">
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li class="${this.attr_prefix}active">
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li class="${this.attr_prefix}active">
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li>
+								<i class="fa-solid fa-star"></i>
+							</li>
+						</ul>
+					</a>
+					<a class="${this.attr_prefix}dropdown-item" href="#">
+						<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}startlist ${this.attr_prefix}gap-1">
+							<li class="${this.attr_prefix}active">
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li class="${this.attr_prefix}active">
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li class="${this.attr_prefix}active">
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li class="${this.attr_prefix}active">
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li>
+								<i class="fa-solid fa-star"></i>
+							</li>
+						</ul>
+					</a>
+					<a class="${this.attr_prefix}dropdown-item" href="#">
+						<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}startlist ${this.attr_prefix}gap-1">
+							<li class="${this.attr_prefix}active">
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li class="${this.attr_prefix}active">
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li class="${this.attr_prefix}active">
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li class="">
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li>
+								<i class="fa-solid fa-star"></i>
+							</li>
+						</ul>
+					</a>
+					<a class="${this.attr_prefix}dropdown-item" href="#">
+						<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}startlist ${this.attr_prefix}gap-1">
+							<li class="${this.attr_prefix}active">
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li class="${this.attr_prefix}active">
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li>
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li>
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li>
+								<i class="fa-solid fa-star"></i>
+							</li>
+						</ul>
+					</a>
+					<a class="${this.attr_prefix}dropdown-item" href="#">
+						<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}startlist ${this.attr_prefix}gap-1">
+							<li class="${this.attr_prefix}active">
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li>
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li>
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li>
+								<i class="fa-solid fa-star"></i>
+							</li>
+							<li>
+								<i class="fa-solid fa-star"></i>
+							</li>
+						</ul>
+					</a>
+				</div>
+			</div>
+			<div class="${this.attr_prefix}dropdown ${this.attr_prefix}imagevideo">
+				<button class="${this.attr_prefix}btn ${this.attr_prefix}btn-secondary ${this.attr_prefix}flex_ ${this.attr_prefix}align_center ${this.attr_prefix}flex_space ${this.attr_prefix}gap-1" onclick="Affiliateambassadorteam_RQ_Feature.filterOptionDropdownToggle(this)">
+					<span>Images & Videos</span>
+					<i class="fa-solid fa-chevron-down"></i>
+				</button>
+				<div class="${this.attr_prefix}dropdown-menu ${this.attr_prefix}d-none">
+					<a class="${this.attr_prefix}dropdown-item" href="#"><b>All</b></a>
+					<a class="${this.attr_prefix}dropdown-item" href="#">With Images & Videos</a>
+				</div>
+			</div>
+		</div>`
+	}
+	static filterOptionDropdownToggle(el){
+		const sibling = el.nextElementSibling
+		sibling.classList.toggle(`${this.attr_prefix}d-none`)
+	}
+
+	//question part
+	//==================================
+	static getQuestionPart(){
+		return `
+		<div class="${this.attr_prefix}tabBodyBox" id="${this.attr_prefix}Questions">
+		<div class="${this.attr_prefix}questionBox">
+			<div class="${this.attr_prefix}profileBox ${this.attr_prefix}flex_ ${this.attr_prefix}align_center">
+				<div class="${this.attr_prefix}profileBox__img">J</div>
+				<div class="${this.attr_prefix}profileBox__Body">
+					<div class="${this.attr_prefix}flex_ ${this.attr_prefix}flex_space ${this.attr_prefix}align_center ${this.attr_prefix}flex_wrap">
+						<h5 class="${this.attr_prefix}m-0">
+							Tom
+							<span>Verified Buyer</span>
+						</h5>
+						<b>03/04/22</b>
+					</div>
+					<b>
+					<span>Q: </span> Does this work on glass also?</b>
+				</div>
+			</div>
+			<!-- close profileBox  -->
+
+			<div class="${this.attr_prefix}questionBox__answer">
+				<div class="${this.attr_prefix}questionBox__answerhe">
+					<i class="fa-solid fa-message"></i>
+					Answer (<span>0</span>)
+				</div>
+				<div class="${this.attr_prefix}questionBox__answer-Box">
+					<div class="${this.attr_prefix}profileBox ${this.attr_prefix}flex_ ${this.attr_prefix}align_center">
+						<div class="${this.attr_prefix}profileBox__img">
+							J
+						</div>
+						<div class="${this.attr_prefix}profileBox__Body">
+							<div class="${this.attr_prefix}flex_ ${this.attr_prefix}flex_space ${this.attr_prefix}align_center ${this.attr_prefix}flex_wrap">
+								<h5 class="${this.attr_prefix}m-0">
+									Jason
+									<span>Verified Buyer</span>
+								</h5>
+								<b>03/04/22</b>
+							</div>
+
+							<p>
+								A: Absolutely looks
+								beautiful. Time will
+								tell on the length of
+								gloss.
+							</p>
+						</div>
+					</div>
+					<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}likeclick ${this.attr_prefix}flex_end ${this.attr_prefix}align_center">
+						<li class="${this.attr_prefix}flex_ ${this.attr_prefix}align_center ${this.attr_prefix}flex_wrap ${this.attr_prefix}gap-2">
+							<p class="${this.attr_prefix}m-0">
+								Was This Review Helpful?
+							</p>
+							<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}align_center ${this.attr_prefix}gap-1">
+								<li>
+									<a href="#" class="${this.attr_prefix}countup">
+										<i class="fa-solid fa-thumbs-up"></i>
+										<span>0</span>
+									</a>
+								</li>
+								<li>
+									<a href="#" class="${this.attr_prefix}countdown">
+										<i class="fa-solid fa-thumbs-down"></i>
+										<span>0</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		</div>
+		`
+	}
+
+	//control methods
+	static showReviewPart(el){
+		document.querySelector(`#${this.main_warpper_id} .${this.attr_prefix}main--contents-render-placement`).innerHTML = this.getReviewPart()
+		el.classList.add(`${this.attr_prefix}active`)
+		//console.log(el.nextElementSibling)
+		const questionBtn = el.nextElementSibling
+		questionBtn.classList.remove(`${this.attr_prefix}active`)
+	}
+	static showQuestionPart(el){
+		document.querySelector(`#${this.main_warpper_id} .${this.attr_prefix}main--contents-render-placement`).innerHTML = this.getQuestionPart()
+		el.classList.add(`${this.attr_prefix}active`)
+		//console.log(el.previousElementSibling)
+		const reviewBtn = el.previousElementSibling
+		reviewBtn.classList.remove(`${this.attr_prefix}active`)
+
 	}
 
 	static postReview(){
