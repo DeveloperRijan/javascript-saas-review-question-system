@@ -1,6 +1,7 @@
 class Affiliateambassadorteam_RQ_Feature{
 	static main_warpper_id = "affiliateambassadorteam_com__review_module_"
 	static attr_prefix = `affiliateambassadorteam_com__`
+	static renderFormInsideEl = `#${this.main_warpper_id} .${this.attr_prefix}form-element-wrapper-box` 
 	static primaryColor = `#1a73e8`
 	static secondaryColor = `#000`
 
@@ -20,10 +21,84 @@ class Affiliateambassadorteam_RQ_Feature{
 		#${this.main_warpper_id} {
 		    padding: 0;
 		    margin: 0;
+		    -webkit-box-sizing: border-box;
+       		-moz-box-sizing: border-box;
+            box-sizing: border-box;
+		}
+		#${this.main_warpper_id} * {
+			margin:0;
+			outline:0;
+			padding:0;
+		    -webkit-box-sizing: border-box;
+       		-moz-box-sizing: border-box;
+            box-sizing: border-box;
 		}
 
 		#${this.main_warpper_id} a {
 		    text-decoration: none;
+		}
+
+		#${this.main_warpper_id} .${this.attr_prefix}text-center {
+		    text-align:center
+		}
+		#${this.main_warpper_id} .${this.attr_prefix}title {
+		    font-size:2rem;
+		    font-weight:800
+		}
+
+		#${this.main_warpper_id} .${this.attr_prefix}form-wrapper-box {
+		    border: 1px solid #ddd;
+		    padding: 20px;
+		    border-radius: 5px;
+		    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 8%);
+		}
+		#${this.main_warpper_id} .${this.attr_prefix}mb-100 {
+		    margin-bottom: 100px;
+		}
+
+		#${this.main_warpper_id} .${this.attr_prefix}form-group {
+		    width:100%;
+		    margin-bottom:1.5rem
+		}
+		#${this.main_warpper_id} .${this.attr_prefix}input-label{
+			display:block;
+			margin-bottom:.6rem;
+			font-weight:700
+		}
+		#${this.main_warpper_id} .${this.attr_prefix}form-control {
+		    display: block;
+		    width: 100%;
+		    padding: .375rem .75rem;
+		    font-size: 1rem;
+		    font-weight: 400;
+		    line-height: 1.5;
+		    color: #212529;
+		    background-color: #fff;
+		    background-clip: padding-box;
+		    border: 1px solid #ced4da;
+		    -webkit-appearance: none;
+		    -moz-appearance: none;
+		    appearance: none;
+		    border-radius: .25rem;
+		    outline:none;
+		    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+			-webkit-box-sizing: border-box;
+       		-moz-box-sizing: border-box;
+            box-sizing: border-box;
+		}
+		#${this.main_warpper_id} button.${this.attr_prefix}submit--btn {
+		    box-shadow: 0 0 0.6rem #1a73e8;
+		    border: 1px solid #1a73e8;
+		    background: #1a73e8;
+		    padding: .8rem 1.5rem;
+		    cursor: pointer;
+		    border-radius: 0.3rem;
+		    border: 1px solid #ddd;
+		    color: #fff;
+		    transition: 0.3s;
+		}
+		#${this.main_warpper_id} textarea{
+			min-height:70px
 		}
 
 		#${this.main_warpper_id} .${this.attr_prefix}flex_ {
@@ -617,6 +692,8 @@ class Affiliateambassadorteam_RQ_Feature{
 			        ${this.getReviewTopPartHTML()}
 
 			            <div class="${this.attr_prefix}reviewSection__Body--box2">
+			                <div class='${this.attr_prefix}form-element-wrapper-box'></div>
+
 			                <div class="${this.attr_prefix}tab">
 			                    <div class="${this.attr_prefix}tab__head">
 			                        <ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}gap-2">
@@ -1570,18 +1647,31 @@ class Affiliateambassadorteam_RQ_Feature{
 
 	//ask a question
 	//===================================
-	static askAQuestionForm(){
+	static askAQuestionForm(e){
+		e.preventDefault()
+		//console.log(this.renderFormInsideEl)
+		const formWrapper = document.querySelector(`${this.renderFormInsideEl}`)
+		//console.log(formWrapper)
+		//console.log(formWrapper.innerHTML)
+
+		if(formWrapper.innerHTML != ''){
+			formWrapper.innerHTML = ""
+			return
+		}
+
 		const formHTML = `
-			<div class='${this.attr_prefix}ask-a-question-form'>
+			<form class='${this.attr_prefix}ask-a-question-form ${this.attr_prefix}form-wrapper-box ${this.attr_prefix}mb-100'>
+				<h3 class='${this.attr_prefix}title ${this.attr_prefix}text-center'>Ask A Question</h3>
 				<div class='${this.attr_prefix}form-group'>
-					<label class='${this.attr_prefix}label'>Question</label>
-					<textarea class='${this.attr_prefix}question--input'></textarea>
+					<label class='${this.attr_prefix}input-label'>Question</label>
+					<textarea class='${this.attr_prefix}form-control'></textarea>
 				</div>
 				<div class='${this.attr_prefix}flex_ ${this.attr_prefix}flex_end'>
-					<button></button>
+					<button class='${this.attr_prefix}submit--btn'>Submit</button>
 				</div>
-			</div>
+			</form>
 		`
+		formWrapper.innerHTML = formHTML
 	}
 
 
