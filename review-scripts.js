@@ -4,6 +4,7 @@ class Affiliateambassadorteam_RQ_Feature{
 	static renderFormInsideEl = `#${this.main_warpper_id} .${this.attr_prefix}form-element-wrapper-box` 
 	static primaryColor = `#1a73e8`
 	static secondaryColor = `#000`
+	static ratingRange = [1,2,3,4,5]
 
 	static styles = `
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
@@ -605,6 +606,15 @@ class Affiliateambassadorteam_RQ_Feature{
 		    right: 0;
 		}
 
+		#${this.main_warpper_id} .${this.attr_prefix}rating-stars-group{
+			display:flex;
+			justify-content:center;
+			align-items:center
+		}
+		#${this.main_warpper_id} .${this.attr_prefix}rating-stars-group label{
+			cursor:pointer
+		}
+
 		@media only screen and (max-width: 979px) {
 		    #${this.main_warpper_id} .${this.attr_prefix}reviewSection__Body {
 		        width: 95%;
@@ -692,7 +702,7 @@ class Affiliateambassadorteam_RQ_Feature{
 			        ${this.getReviewTopPartHTML()}
 
 			            <div class="${this.attr_prefix}reviewSection__Body--box2">
-			                <div class='${this.attr_prefix}form-element-wrapper-box'></div>
+			                <div class='${this.attr_prefix}form-element-wrapper-box' data-state=''></div>
 
 			                <div class="${this.attr_prefix}tab">
 			                    <div class="${this.attr_prefix}tab__head">
@@ -1654,8 +1664,9 @@ class Affiliateambassadorteam_RQ_Feature{
 		//console.log(formWrapper)
 		//console.log(formWrapper.innerHTML)
 
-		if(formWrapper.innerHTML != ''){
+		if(formWrapper.getAttribute('data-state') == 'ask_question'){
 			formWrapper.innerHTML = ""
+			formWrapper.setAttribute("data-state", "")
 			return
 		}
 
@@ -1672,10 +1683,107 @@ class Affiliateambassadorteam_RQ_Feature{
 			</form>
 		`
 		formWrapper.innerHTML = formHTML
+		formWrapper.setAttribute("data-state", "ask_question")
 	}
 
 
 	//post a review
 	//==================================
+	static postAReviewForm(e){
+		e.preventDefault()
+		//console.log(this.renderFormInsideEl)
+		const formWrapper = document.querySelector(`${this.renderFormInsideEl}`)
+		//console.log(formWrapper)
+		//console.log(formWrapper.innerHTML)
+
+		if(formWrapper.getAttribute('data-state') == 'post_review'){
+			formWrapper.innerHTML = ""
+			formWrapper.setAttribute("data-state", "")
+			return
+		}
+
+		const formHTML = `
+			<form class='${this.attr_prefix}post-a-review-form ${this.attr_prefix}form-wrapper-box ${this.attr_prefix}mb-100'>
+				<h3 class='${this.attr_prefix}title ${this.attr_prefix}text-center'>Post A Review</h3>
+				
+				<div class='${this.attr_prefix}form-group'>
+					<label class='${this.attr_prefix}input-label'>Rating</label>
+					<div class='${this.attr_prefix}rating-stars-group'>
+						<div>
+							<input onclick='Affiliateambassadorteam_RQ_Feature.handleRatingClicked(this)' id='${this.main_warpper_id}_${this.attr_prefix}_rating_input_1' type='radio' name='rating' value='1' style='display:none'>
+							<label for='${this.main_warpper_id}_${this.attr_prefix}_rating_input_1'>${this.getStar()}</label>
+						</div>
+						<div>
+							<input onclick='Affiliateambassadorteam_RQ_Feature.handleRatingClicked(this)' id='${this.main_warpper_id}_${this.attr_prefix}_rating_input_2' type='radio' name='rating' value='2' style='display:none'>
+							<label for='${this.main_warpper_id}_${this.attr_prefix}_rating_input_2'>${this.getStar()}</label>
+						</div>
+						<div>
+							<input onclick='Affiliateambassadorteam_RQ_Feature.handleRatingClicked(this)' id='${this.main_warpper_id}_${this.attr_prefix}_rating_input_3' type='radio' name='rating' value='3' style='display:none'>
+							<label for='${this.main_warpper_id}_${this.attr_prefix}_rating_input_3'>${this.getStar()}</label>
+						</div>
+						<div>
+							<input onclick='Affiliateambassadorteam_RQ_Feature.handleRatingClicked(this)' id='${this.main_warpper_id}_${this.attr_prefix}_rating_input_4' type='radio' name='rating' value='4' style='display:none'>
+							<label for='${this.main_warpper_id}_${this.attr_prefix}_rating_input_4'>${this.getStar()}</label>
+						</div>
+						<div>
+							<input onclick='Affiliateambassadorteam_RQ_Feature.handleRatingClicked(this)' id='${this.main_warpper_id}_${this.attr_prefix}_rating_input_5' type='radio' name='rating' value='5' style='display:none'>
+							<label for='${this.main_warpper_id}_${this.attr_prefix}_rating_input_5'>${this.getStar()}</label>
+						</div>
+					</div>
+				</div>
+				<div class='${this.attr_prefix}form-group'>
+					<label class='${this.attr_prefix}input-label'>Review</label>
+					<textarea class='${this.attr_prefix}form-control'></textarea>
+				</div>
+				<div class='${this.attr_prefix}form-group'>
+					<label class='${this.attr_prefix}input-label'>Attachments (Optional)</label>
+					<input type='file' class='${this.attr_prefix}form-control'>
+				</div>
+				<div class='${this.attr_prefix}flex_ ${this.attr_prefix}flex_end'>
+					<button class='${this.attr_prefix}submit--btn'>Submit</button>
+				</div>
+			</form>
+		`
+		formWrapper.innerHTML = formHTML
+		formWrapper.setAttribute("data-state", "post_review")
+	}
+
+
+	static handleRatingClicked(el){
+		const rating = el.value
+		//console.log(rating)
+		if(!this.ratingRange.includes(parseInt(rating))){
+			return alert("Something went wrong, invalid rating value detected, please refres the page and try again!")
+		}
+
+		const ref = `#${this.main_warpper_id} form.${this.attr_prefix}post-a-review-form .${this.attr_prefix}rating-stars-group label`
+		const labels = document.querySelectorAll(ref)
+		//console.log(ref)
+		//console.log(labels)
+		for(let i=0; i < labels.length; i++){
+			if (i < rating) {
+				labels[i].innerHTML = this.getStar('filled')
+			}else{
+				labels[i].innerHTML = this.getStar('outline')
+			}
+		}
+	}
+
+
+	//get helpers
+	static getStar(starType='outline', fillColor=null){
+		const starTypes = ["outline", "filled", "half"]
+		if (!starTypes.includes(starType)) {
+			return alert(`Invalid start type (${starType}) detected!`)
+		}
+
+		if (starType === starTypes[1]) {
+			return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: ${fillColor ? fillColor : '#212121'}"><path d="M21.947 9.179a1.001 1.001 0 0 0-.868-.676l-5.701-.453-2.467-5.461a.998.998 0 0 0-1.822-.001L8.622 8.05l-5.701.453a1 1 0 0 0-.619 1.713l4.213 4.107-1.49 6.452a1 1 0 0 0 1.53 1.057L12 18.202l5.445 3.63a1.001 1.001 0 0 0 1.517-1.106l-1.829-6.4 4.536-4.082c.297-.268.406-.686.278-1.065z"></path></svg>`
+		}
+		if (starType === starTypes[2]) {
+			return `halpf`
+		}
+		return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: ${fillColor ? fillColor : '#212121'}"><path d="m6.516 14.323-1.49 6.452a.998.998 0 0 0 1.529 1.057L12 18.202l5.445 3.63a1.001 1.001 0 0 0 1.517-1.106l-1.829-6.4 4.536-4.082a1 1 0 0 0-.59-1.74l-5.701-.454-2.467-5.461a.998.998 0 0 0-1.822 0L8.622 8.05l-5.701.453a1 1 0 0 0-.619 1.713l4.214 4.107zm2.853-4.326a.998.998 0 0 0 .832-.586L12 5.43l1.799 3.981a.998.998 0 0 0 .832.586l3.972.315-3.271 2.944c-.284.256-.397.65-.293 1.018l1.253 4.385-3.736-2.491a.995.995 0 0 0-1.109 0l-3.904 2.603 1.05-4.546a1 1 0 0 0-.276-.94l-3.038-2.962 4.09-.326z"></path></svg>`
+	}
 }
 
