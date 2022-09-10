@@ -5,16 +5,17 @@ class Affiliateambassadorteam_RQ_Feature{
 	static primaryColor = `#1a73e8`
 	static secondaryColor = `#000`
 	static ratingRange = [1,2,3,4,5]
+	static greenColor = "#00FF00"
+
+	static apiHostUrl = "https://affiliateambassadorteam.com"
+	static apiEndPoint_AskAQuestion = "/api/questions"
+	static isLocal = false
+	static testProductSlug = "test_product_slug"
 
 	static styles = `
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
-	        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css"
+	        integrity="sha512-nNlU0WK2QfKsuEmdcTwkeh+lhGs6uyOxuUs+n+0oXSYDok5qy0EI0lt01ZynHq6+p/tbgpZ7P+yUb+r71wqdXg=="
 	        crossorigin="anonymous" referrerpolicy="no-referrer" />
-		    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css"
-		        integrity="sha512-nNlU0WK2QfKsuEmdcTwkeh+lhGs6uyOxuUs+n+0oXSYDok5qy0EI0lt01ZynHq6+p/tbgpZ7P+yUb+r71wqdXg=="
-		        crossorigin="anonymous" referrerpolicy="no-referrer" />
-		    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
-		    <title>Document</title>
 		<style>
 		    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
@@ -687,7 +688,12 @@ class Affiliateambassadorteam_RQ_Feature{
 	`
 
 
-	static init(targetDomElementId){
+	static init(targetDomElementId, isLocal=false){
+		this.isLocal = isLocal
+		if (this.isLocal) {
+			this.apiHostUrl = "http://localhost:8000"
+		}
+
 		const head = document.querySelector("head")
 		const body = document.querySelector("body")
 		head.insertAdjacentHTML("beforeend", this.styles)
@@ -745,18 +751,20 @@ class Affiliateambassadorteam_RQ_Feature{
 						<h2>5.0</h2>
 						<ul class="${this.attr_prefix}list ${this.attr_prefix}flex_ ${this.attr_prefix}startlist ${this.attr_prefix}flex_center ${this.attr_prefix}gap-1">
 							<li class="${this.attr_prefix}active">
-								<i class="fa-solid fa-star"></i>
+								${this.getStar('filled', this.greenColor)}
 							</li>
 							<li class="${this.attr_prefix}active">
-								<i class="fa-solid fa-star"></i>
+								${this.getStar('half', this.greenColor)}
 							</li>
 							<li class="${this.attr_prefix}active">
-								<i class="fa-solid fa-star"></i>
+								${this.getStar('filled')}
 							</li>
 							<li class="${this.attr_prefix}active">
-								<i class="fa-solid fa-star"></i>
+								${this.getStar('filled')}
 							</li>
-							<li><i class="fa-solid fa-star"></i></li>
+							<li>
+								${this.getStar('filled')}
+							</li>
 						</ul>
 						<div>
 							<b>535</b> <span>Reviews</span> | <b>7</b>
@@ -1671,11 +1679,11 @@ class Affiliateambassadorteam_RQ_Feature{
 		}
 
 		const formHTML = `
-			<form class='${this.attr_prefix}ask-a-question-form ${this.attr_prefix}form-wrapper-box ${this.attr_prefix}mb-100'>
+			<form onsubmit='Affiliateambassadorteam_RQ_Feature.submitAskAQuestionForm(event, this)' class='${this.attr_prefix}ask-a-question-form ${this.attr_prefix}form-wrapper-box ${this.attr_prefix}mb-100' method="POST" action="${this.apiHostUrl}${this.apiEndPoint_AskAQuestion}">
 				<h3 class='${this.attr_prefix}title ${this.attr_prefix}text-center'>Ask A Question</h3>
 				<div class='${this.attr_prefix}form-group'>
 					<label class='${this.attr_prefix}input-label'>Question</label>
-					<textarea class='${this.attr_prefix}form-control'></textarea>
+					<textarea name="${this.attr_prefix}question" class='${this.attr_prefix}form-control'></textarea>
 				</div>
 				<div class='${this.attr_prefix}flex_ ${this.attr_prefix}flex_end'>
 					<button class='${this.attr_prefix}submit--btn'>Submit</button>
@@ -1684,6 +1692,26 @@ class Affiliateambassadorteam_RQ_Feature{
 		`
 		formWrapper.innerHTML = formHTML
 		formWrapper.setAttribute("data-state", "ask_question")
+	}
+
+	//handle as a question form
+	static submitAskAQuestionForm(e, form){
+		e.preventDefault()
+		const formData = new FormData(form)
+		const question = formData.get(`${this.attr_prefix}question`)
+		if (!question || question == '') {
+			return alert("Question is required")
+		}
+
+		//get auth customer id
+		const responseShopifyAuth = this.checkIsUserLoggedin()
+		if (isNaN(responseShopifyAuth)) {
+			return alert("You are not loggedin, please login to ask a question")
+		}
+
+		//extract slug
+		const slug = this.extractSlug()
+
 	}
 
 
@@ -1781,9 +1809,56 @@ class Affiliateambassadorteam_RQ_Feature{
 			return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: ${fillColor ? fillColor : '#212121'}"><path d="M21.947 9.179a1.001 1.001 0 0 0-.868-.676l-5.701-.453-2.467-5.461a.998.998 0 0 0-1.822-.001L8.622 8.05l-5.701.453a1 1 0 0 0-.619 1.713l4.213 4.107-1.49 6.452a1 1 0 0 0 1.53 1.057L12 18.202l5.445 3.63a1.001 1.001 0 0 0 1.517-1.106l-1.829-6.4 4.536-4.082c.297-.268.406-.686.278-1.065z"></path></svg>`
 		}
 		if (starType === starTypes[2]) {
-			return `halpf`
+			return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: ${fillColor ? fillColor : '#212121'}"><path d="M5.025 20.775A.998.998 0 0 0 6 22a1 1 0 0 0 .555-.168L12 18.202l5.445 3.63a1.001 1.001 0 0 0 1.517-1.106l-1.829-6.4 4.536-4.082a1 1 0 0 0-.59-1.74l-5.701-.454-2.467-5.461a.998.998 0 0 0-1.822-.001L8.622 8.05l-5.701.453a1 1 0 0 0-.619 1.713l4.214 4.107-1.491 6.452zM12 5.429l2.042 4.521.588.047h.001l3.972.315-3.271 2.944-.001.002-.463.416.171.597v.003l1.253 4.385L12 15.798V5.429z"></path></svg>`
 		}
 		return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: ${fillColor ? fillColor : '#212121'}"><path d="m6.516 14.323-1.49 6.452a.998.998 0 0 0 1.529 1.057L12 18.202l5.445 3.63a1.001 1.001 0 0 0 1.517-1.106l-1.829-6.4 4.536-4.082a1 1 0 0 0-.59-1.74l-5.701-.454-2.467-5.461a.998.998 0 0 0-1.822 0L8.622 8.05l-5.701.453a1 1 0 0 0-.619 1.713l4.214 4.107zm2.853-4.326a.998.998 0 0 0 .832-.586L12 5.43l1.799 3.981a.998.998 0 0 0 .832.586l3.972.315-3.271 2.944c-.284.256-.397.65-.293 1.018l1.253 4.385-3.736-2.491a.995.995 0 0 0-1.109 0l-3.904 2.603 1.05-4.546a1 1 0 0 0-.276-.94l-3.038-2.962 4.09-.326z"></path></svg>`
+	}
+
+	//extract current product slug
+	static extractSlug(){
+		
+	}
+
+	static checkIsUserLoggedin(){
+		console.log("shopify_user_auth_checking");
+		//return 1;
+		try {
+		  let curr = window.ShopifyAnalytics.meta.page.customerId;
+		  if (curr !== undefined && curr !== null && curr !== "") {
+		    return curr;
+		  }
+		} catch(e) {
+			console.log(e)
+		}
+
+		try {
+		  let curr = window.meta.page.customerId;
+		  if (curr !== undefined && curr !== null && curr !== "") {
+		    return curr;
+		  }
+		} catch (e) {
+			console.log(e)
+		}   
+
+		try {
+		  let curr = _st.cid;
+		  if (curr !== undefined && curr !== null && curr !== "") {
+		    return curr;
+		  }
+		} catch (e) {
+			console.log(e)
+		}
+
+		try {
+		  let curr = ShopifyAnalytics.lib.user().traits().uniqToken;
+		  if (curr !== undefined && curr !== null && curr !== "") {
+		    return curr;
+		  }
+		} catch (e) {
+			console.log(e)
+		}
+
+		return '--';
 	}
 }
 

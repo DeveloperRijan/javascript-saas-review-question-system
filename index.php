@@ -15,7 +15,7 @@
 <script type="text/javascript" src="./review-scripts.js"></script>
 <script type="text/javascript">
 	window.onload = function(){
-	Affiliateambassadorteam_RQ_Feature.init("renderHere")
+	Affiliateambassadorteam_RQ_Feature.init("renderHere", 1)
 }
 </script>
 </body>
